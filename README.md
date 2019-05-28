@@ -222,7 +222,7 @@ git merge [target] # Merge the target branch into current
 **Note:** A successful merge automatically uses the commits from the source branch. This means that the commits have already been made, you just need to push these to the server (`git push`)
 
 To merge your changes from above:
-1. Switch back to the `master` branch using one of the commands fom the above section
+1. Switch back to the `master` branch using one of the commands from the above section
 2. Merge in the changes you made in the other branch
 
     `git merge first_new_branch`
