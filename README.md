@@ -100,7 +100,7 @@ Cloning a *repository* (a repository or repo is just a directory that is linked 
 For each lab and assignment in this course, a repo will be created for you on *GitLab*. You will use it to store your work as you complete it. To clone this week's repo run:
 
 ```
-$ git clone gitlab@gitlab.cse.unsw.EDU.AU:z5555555/19T2-cs2511-lab1.git
+$ git clone gitlab@gitlab.cse.unsw.EDU.AU:z5555555/19T2-cs2511-lab01.git
 ```
 
 ## Making a commit
