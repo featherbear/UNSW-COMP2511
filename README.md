@@ -1,6 +1,6 @@
 # Lab 01
 
-## Due: Week 1, Sunday, 11:59 pm
+## Due: Week 1, Sunday, 5:00 pm
 
 ## Value: 1 mark
 
