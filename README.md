@@ -26,7 +26,7 @@ https://gitlab.cse.unsw.edu.au/z5555555/19T2-cs2511-lab01
 
 You will need to log in with your zID and zPass. If you are unable to login please speak to your tutor or lab assistant.
 
-If you're familiar with GitHub then you should find GitLab very similar. You'll observe that there is a copy of these instructions in the repository (`README.md`) as well as a few files and folders relating to the lab exercises.
+If you're familiar with GitHub then you should find GitLab very similar. You'll observe that there is a copy of these instructions in the repository (`README.md`) as well as a few files and folders relating to this lab exercise.
 
 Feel free to browse GitLab in order to familiarise yourself with it. If you're not familiar with git, the following sections should help get you started learning it.
 
