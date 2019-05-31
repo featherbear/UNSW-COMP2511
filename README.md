@@ -293,7 +293,7 @@ To fix the conflict you created:
 
 ## Testing
 
-You can run the `test_git.sh` file to check whether you have done most of the git exercises. Make sure you checkout the master branch before running this script.
+Checkout `master` and merge `first_new_branch` back into it. You can now run the `test_git.sh` file to check whether you have done most of the git exercises.
 
 # Java Introduction
 
