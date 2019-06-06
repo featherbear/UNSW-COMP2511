@@ -9,6 +9,12 @@
 * Understand the OO principles abstraction, encapsulation and inheritance
 * Become familiar with the Java API
 
+## Setup
+
+An individual repository for this lab has been created for you here (replace z5555555 with your own zID):
+
+https://gitlab.cse.unsw.edu.au/z5555555/19T2-cs2511-lab02
+
 ## Exercise
 
 Modify the class StaffMember (inside package `staff`) so that it satisfies the following requirements:
