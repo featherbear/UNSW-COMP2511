@@ -130,7 +130,7 @@ Of these commands, `request`, `change`, `cancel`, and `list` will produce output
 
 Note that all commands produce a JSON object as output, except for `list` that produces a JSON array.
 
-For commands that do not always succeed, the `status` field indicates whether the result was successful. If a reservation request, change, or cancellation cannot be fulfilled, the status should be `rejected`. In the case of such a rejection, no changes can be made. You can assume `list` always has a valid venue, and `room` is not used to add a room that has already been added.
+For commands that do not always succeed, the `status` field indicates whether the result was successful. If a reservation request, change, or cancellation cannot be fulfilled, the status should be `rejected`. In the case of such a rejection, no reservations should be added, changed or deleted. You can assume `list` always has a valid venue, and `room` is not used to add a room that has already been added.
 
 ## Hints
 
