@@ -44,7 +44,7 @@ The implementation should input and output data in the JSON format. It will read
     > { "command": "cancel", "id": *id* }
 
 * List the occupancy of each room in the venue *venue*
-    > { "command": "print", "venue": *venue* }
+    > { "command": "list", "venue": *venue* }
 
 To remove any ambiguity, reservation requests and changes are fulfilled as follows: each venue is checked (in order of definition in the input) to determine whether it can satisfy all requested rooms, and if so, the first available rooms (again in order of definition in the input) are assigned to the reservation. The output should list rooms assigned to the reservation in order of the declarations at the start of the input (see first example below). Do not try to fulfil requests by allocating larger rooms when a small room is requested, or by reassigning rooms to different reservations to create space, etc. For the `list` command, output an array containing the occupancy of each room at the specified venue in order of room declarations, then date (see below).
 
