@@ -140,7 +140,7 @@ For commands that do not always succeed, the `status` field indicates whether th
 
 * The JSON-Java library is intended for serialisation, not as an alternative to Java collections.
 
-* You can pipe a file to STDIN on Eclipse by opening the **Run** menu, clicking on **Run Configurations**, selecting the **VenueHireSystem** configuration, navigating to the **Common** tab, ticking the checkbox next to **Input File**, and using either the **Workspace** or **File System** buttons to select the input file.
+* You can pipe a file to STDIN on Eclipse by opening the **Run** menu, clicking on **Run Configurations**, selecting the **VenueHireSystem** configuration, navigating to the **Common** tab, ticking the checkbox next to **Input File**, and using either the **Workspace** or **File System** buttons to select the input file. **NOTE:** You will still need to manually stop your program by clicking the red button above the console.
 
 ## Submission
 
