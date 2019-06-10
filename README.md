@@ -1,11 +1,5 @@
 # Assignment 1 - Venue Hire System
 
-## **DRAFT**
-
-This is a draft assignment specification. It is subject to change. Repositories have not been created for you yet, nor submission enabled, but starter code can be viewed here.
-
----
-
 ## Due: Week 4, Wednesday, 5 PM
 
 ## Value: 10 marks
