@@ -4,10 +4,10 @@
 package unsw.venues;
 
 import java.time.LocalDate;
+import java.util.Scanner;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.json.JSONTokener;
 
 /**
  * Venue Hire System for COMP2511.
@@ -80,11 +80,16 @@ public class VenueHireSystem {
     public static void main(String[] args) {
         VenueHireSystem system = new VenueHireSystem();
 
-        JSONTokener input = new JSONTokener(System.in);
+        Scanner sc = new Scanner(System.in);
 
-        while (input.more())
-            system.processCommand((JSONObject) input.nextValue());
-
+        while (sc.hasNextLine()) {
+            String line = sc.nextLine();
+            if (!line.trim().equals("")) {
+                JSONObject command = new JSONObject(line);
+                system.processCommand(command);
+            }
+        }
+        sc.close();
     }
 
 }
