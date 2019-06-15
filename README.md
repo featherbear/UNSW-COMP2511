@@ -27,7 +27,7 @@ Recall the university enrolment system from the lectures. The requirements for t
 * Sessions in a course offering for a particular semester have an allocated room and timeslot
 * If a student enrols in a course, s/he must also enrol in some sessions of that course
 
-Using what was developed in the lecture as a basis, draw a complete UML diagram including all fields, methods and relationships. In deciding on the methods for the classes, you may wish to consider the principle of least knowledge (Law of Demeter).
+Using what was developed in the lecture as a basis, draw a complete UML diagram including all fields, methods and relationships. In deciding on the methods for the classes, you may wish to consider the [principle of least knowledge (Law of Demeter)](https://en.wikipedia.org/wiki/Law_of_Demeter).
 
 In this repo is skeleton code for basic classes and a test class with a series of `TODO`s describing a simple use case. Complete the test class by implementing the necessary components of the enrolment system. You can change the code in any way you feel is necessary.
 
