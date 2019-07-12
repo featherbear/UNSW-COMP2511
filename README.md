@@ -79,7 +79,7 @@ The UI will consist of two buttons and a grid of checkboxes, like this:
 
 A checkbox that is ticked corresponds to an alive cell. To create that in SceneBuilder:
 
-* Use a `AnchorPane` as the root element
+* Use a `Pane` as the root element
 * Add a `GridPane`.
 * Add a button to *tick* the game.
 * Add a second button to *play* the game.
