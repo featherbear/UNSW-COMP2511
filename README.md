@@ -22,7 +22,7 @@ Submission instructions are at the end of the exercise below.
 ## 1. GitLab
 An individual repository for you for this lab has been created for you on the CSE GitLab server. You can find it at this URL (substituting z5555555 for your own zID):
 
-https://gitlab.cse.unsw.edu.au/z5555555/19T2-cs2511-lab01
+https://gitlab.cse.unsw.edu.au/z5555555/19T3-cs2511-lab01
 
 You will need to log in with your zID and zPass. If you are unable to login please speak to your tutor or lab assistant.
 
@@ -100,7 +100,7 @@ Cloning a *repository* (a repository or repo is just a directory that is linked 
 For each lab and assignment in this course, a repo will be created for you on *GitLab*. You will use it to store your work as you complete it. To clone this week's repo run:
 
 ```
-$ git clone gitlab@gitlab.cse.unsw.EDU.AU:z5555555/19T2-cs2511-lab01.git
+$ git clone gitlab@gitlab.cse.unsw.EDU.AU:z5555555/19T3-cs2511-lab01.git
 ```
 
 ## Making a commit
@@ -359,6 +359,8 @@ Java
 Program
 ```
 
+Once completed commit and push your changes.
+
 # Submission
 
 Submit your lab by running:
@@ -367,7 +369,7 @@ Submit your lab by running:
 $ 2511 submit lab01
 ```
 
-This will submit the contents of your `master` branch on your GitLab repo, so make sure to commit and push your changes. It must be run on a CSE computer (either remotely via vlab or ssh, or on a physical lab computer), but it can be run from any directory as it does not depend on any local files.
+This will submit the contents of your `master` branch on your GitLab repo, so make sure to commit and push your changes. It must be run on a CSE computer (either remotely via vlab or ssh, or on a physical lab computer), but it can be run from any directory as it does not depend on any local files. It is **NOT** necessary to copy files into your CSE account.
 
 Once you have submitted a record of it is created on GitLab. In your repo, if you click on **Tags**
 
