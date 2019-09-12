@@ -309,13 +309,15 @@ Create a new branch called `java_exercises` to complete the following exercises.
 
 ## Setting up Eclipse on Lab Machines and importing the HelloWorld.java
 
-From a terminal, execute **eclipse**: this should start up a version of eclipse in a new window
+While we can compile and execute Java via the command line, it is generally easier to work with Java in an Integrated Development Environment (IDE). In this course, we will be using Eclipse for this purpose. These steps assume you're using a lab machine, but using your own computer.
+
+From a terminal, execute **eclipse**: this should start up a version of Eclipse in a new window
 
 1. Follow the prompts, and set up a workspace directory for eclipse in your home (or sub-) directory
-2. Follow any recommended instructions concerning the Scala IDE plugin
+2. If asked, you do not need to enable anything related to the Scala IDE plugin
 3. If you see a welcome screen, close it to reveal a Java perspective
-4. Your repository for this lab has already been setup as an eclipse project, so you can just import it directly. To do so, go to **File** > **Import...**. In the list that comes up, under **General** select **Existing Projects into Workspace** and click next. On the subsequent screen, click browse at the top right and select the `lab01` directory.
-5. In the Package Explorer (panel on the left), locate the `lab01` project and click on it. You should see a folder named `src` and the file `HelloWorld.java`. Because `HelloWorld.java` isn't inside the `src` directory, eclipse doesn't try to compile it. Drag it into the `src` directory.
+4. Your repository for this lab has already been setup as an Eclipse project, so you can just import it directly. To do so, go to **File** > **Import...**. In the list that comes up, under **General** select **Existing Projects into Workspace** and click next. On the subsequent screen, click browse at the top right and select the `19T3-cs2511-lab01` directory.
+5. In the Package Explorer (panel on the left), locate the `19T3-cs2511-lab01` project and click on it. You should see a folder named `src` and the file `HelloWorld.java`. Because `HelloWorld.java` isn't inside the `src` directory, eclipse doesn't try to compile it. Drag it into the `src` directory.
 6. Open `HelloWorld.java` by double clicking on it.
 7. Run this programs in Eclipse via **Run** > **Run As ...** > **Java Application** or hit the Play button after setting up a Run Configuration
 8. Look at the **Console** to see the output (or at the **Problems** tab for any bugs)
@@ -369,7 +371,7 @@ Submit your lab by running:
 $ 2511 submit lab01
 ```
 
-This will submit the contents of your `master` branch on your GitLab repo, so make sure to commit and push your changes. It must be run on a CSE computer (either remotely via vlab or ssh, or on a physical lab computer), but it can be run from any directory as it does not depend on any local files. It is **NOT** necessary to copy files into your CSE account.
+This will submit the contents of the `master` branch on your GitLab repo, so make sure to commit and push your changes. It must be run on a CSE computer (either remotely via vlab or ssh, or on a physical lab computer), but it can be run from any directory as it does not depend on any local files. It is **NOT** necessary to copy files into your CSE account.
 
 Once you have submitted a record of it is created on GitLab. In your repo, if you click on **Tags**
 
