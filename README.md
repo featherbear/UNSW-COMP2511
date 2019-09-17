@@ -1,2 +1,2 @@
-# YOUR COURSE TITLE
-20XX Session XX Course Work
+# COMP2511 Object-Oriented Design & Programming
+2019 Session Three Course Work
