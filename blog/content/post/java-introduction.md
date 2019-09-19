@@ -134,7 +134,6 @@ class MyProgram {
 ## Access Modifiers
 
 - `public` - Any
-- `protected` - Package level
+- `protected` - Any subclass in any package
+- `-` (default) Any subclass within that package
 - `private` - Only that class
-- `-` (default)
-
