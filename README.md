@@ -41,7 +41,7 @@ Create a class `StaffTest` in the package in the package `staff.test` to test th
   * Creates a `StaffMember` with a name and salary of your choosing.
   * Creates an instance of `Lecturer` with a name, salary, school and academic status of your choosing.
   * Calls `printStaffDetails(...)` twice with each of the above as arguments.
-  * Tests the `equals(..)` method of the two classes. Use [the documentation](https://docs.oracle.com/javase/11/docs/api/java/lang/Object.html#equals-java.lang.Object-) for `Object.equals(...)` as a guide for what you should test.
+  * Tests the `equals(..)` method of the two classes. Use [the documentation](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Object.html#equals(java.lang.Object)) for `Object.equals(...)` as a guide for what you should test.
 
 ## Submission
 
