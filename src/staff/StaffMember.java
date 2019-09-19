@@ -1,4 +1,4 @@
-package example;
+package staff;
 
 /**
  * A staff member
