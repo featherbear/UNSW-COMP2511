@@ -12,7 +12,7 @@
 
 ## Preamble
 
-In this assignment, you will design and implement a prototype system that could serve as the "back-end" of a venue hire system (such as for holding conferences). Pay careful attention to the requirements and make sure you have a complete and sound understanding of them before developing a design and implementing it. To do this you will need to read the requirements multiple times and make your own notes. **The sample input and output files do not form a complete specification**.
+In this assignment, you will design and implement a prototype system that could serve as the "back-end" of a venue hire system (such as for holding conferences). Pay careful attention to the requirements and make sure you have a complete and sound understanding of them before developing an **object-oriented** design and implementing it. To do this you will need to read the requirements multiple times and make your own notes. **The sample input and output files do not form a complete specification**.
 
 ## Requirements
 
