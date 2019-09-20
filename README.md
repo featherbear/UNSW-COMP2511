@@ -1,6 +1,6 @@
 # Assignment 1 - Venue Hire System
 
-## Due: Week 4, Wednesday, 5 PM
+## Due: Week 4, Sunday, 5 PM
 
 ## Value: 10 marks
 
