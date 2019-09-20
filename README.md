@@ -12,7 +12,7 @@
 
 ## Preamble
 
-In this assignment, you will design and implement a prototype system that could serve as the "back-end" of a venue hire system (such as for holding conferences). Pay careful attention to the requirements and make sure you have a complete and sound understanding of them before developing a design and implementing it.
+In this assignment, you will design and implement a prototype system that could serve as the "back-end" of a venue hire system (such as for holding conferences). Pay careful attention to the requirements and make sure you have a complete and sound understanding of them before developing a design and implementing it. To do this you will need to read the requirements multiple times and make your own notes. **The sample input and output files do not form a complete specification**.
 
 ## Requirements
 
@@ -20,9 +20,9 @@ In this venue hire system, customers can make, change and cancel reservations. E
 
 Assessment will be based on the design of your program in addition to correctness. You should submit at least a UML class diagram used for the design of your program, i.e. not generated from code afterwards.
 
-The implementation should input and output data in the JSON format. It will read from STDIN (`System.in` in Java) and output to STDOUT (`System.out` in Java). The input will be a series of JSON objects, each containing a single command (each on its own line). After reading in a JSON object, the implementation will immediately process that command; i.e. it cannot wait for all commands to be input before acting on them. You can assume `room` commands will precede all other commands, but beyond that there are no guarantees of the order or quantity of each command. The commands are as follows (the text in italics is what will vary):
+The implementation should input and output data in the JSON format. It will read from STDIN (`System.in` in Java) and output to STDOUT (`System.out` in Java). The input will be a series of JSON objects, each containing a single command (on its own line). After reading in a JSON object, the implementation will immediately process that command; i.e. it cannot wait for all commands to be input before acting on them. You can assume `room` commands will precede all other commands, but beyond that there are no guarantees of the order or quantity of each command. The commands are as follows (the text in italics is what will vary):
 
-* Specify that venue *venue* has a room with name *room* and that has size *size*.
+* Specify that venue *venue* has a room with name *room* of size *size*.
 
     > { "command": "room", "venue": *venue*, "room": *room*, "size": *size* }
 
@@ -34,21 +34,21 @@ The implementation should input and output data in the JSON format. It will read
 
     > { "command": "change", "id": *id*, "start": *startdate*, "end": *enddate*, "small": *small*, "medium": *medium*, "large": *large* }
 
-* Cancel reservation *id* (if it exists) and free up rooms
+* Cancel reservation *id* and free up rooms
     > { "command": "cancel", "id": *id* }
 
 * List the occupancy of each room in the venue *venue*
     > { "command": "list", "venue": *venue* }
 
-To remove any ambiguity, reservation requests and changes are fulfilled as follows: each venue is checked (in order of definition in the input) to determine whether it can satisfy all requested rooms, and if so, the first available rooms (again in order of definition in the input) are assigned to the reservation. The output should list rooms assigned to the reservation in order of the declarations at the start of the input (see first example below). Do not try to fulfil requests by allocating larger rooms when a small room is requested, or by reassigning rooms to different reservations to create space, etc. For the `list` command, output an array containing the occupancy of each room at the specified venue in order of room declarations, then date (see below).
+To remove any ambiguity, **all** reservation requests and changes are fulfilled as follows: each venue is checked (in order of definition in the input) to determine whether it can satisfy **all** requested rooms, and if so, the first available rooms (again in order of definition in the input) are assigned to the reservation. The output should list the rooms assigned to the reservation (once again in order of definition in the input; see first example below). Do not try to fulfil requests by allocating larger rooms when a small room is requested, or by reassigning rooms to different reservations to create space, etc. For the `list` command, output an array containing the occupancy of each room at the specified venue in order of room declarations. The reservations for a given room should be output in order of date (see below).
 
 ## Implementation
 
 Starter code has been provided for in your repository for this assignment, available here (replace z5555555 with your own zID):
 
-https://gitlab.cse.unsw.edu.au/z5555555/19T2-cs2511-ass1
+https://gitlab.cse.unsw.edu.au/z5555555/19T3-cs2511-ass1
 
-Create all your Java source files in the `unsw.venues` package. You may create subpackages if you wish, but this is not required. The main Java file is `VenueHireSystem.java`. Do not rename this class. The starter code includes the [JSON-java](https://stleary.github.io/JSON-java/) library and shows how to use it read and write JSON formatted data. Other than this, you are **NOT ALLOWED TO USE ANY THIRD PARTY LIBRARIES**
+Create all your Java source files in the `unsw.venues` package. You may create subpackages if you wish, but this is not required. The main Java file is `VenueHireSystem.java`. Do not rename this class. The starter code includes the [JSON-java](https://stleary.github.io/JSON-java/) library and shows how to use it read and write JSON formatted data. Other than this, you are **NOT ALLOWED TO USE ANY THIRD PARTY LIBRARIES**.
 
 For machine marking, the output will be directly compared to the expected output, so do not print out any extra debugging information or include extra fields in your JSON objects. You can assume that reservation identifiers are unique (e.g. there won't be two reservations under the name `Annual Meeting`). Similarly, dates will be in the ISO-8601 format `uuuu-MM-dd` (e.g. `2019-05-27`). This is the format output by `LocalDate.toString()`. All characters in venues, rooms and reservation identifiers will be alpha-numeric except for spaces. The input to this system is trusted, so you can assume it will not be malformed, fields will be of the right type, dates will be valid, etc.
 
@@ -101,7 +101,7 @@ This is a concrete example input demonstrating the commands supported (comments 
 { "command": "list", "venue": "Zoo" }
 ```
 
-Of these commands, `request`, `change`, `cancel`, and `list` will produce output. Inputting the above should yield the following (ordering of fields and indentation may differ):
+Of these commands, `request`, `change`, and `list` will produce output. The other commands do not. Inputting the above should yield the following (ordering of fields and indentation may differ):
 
 ```JSON
 { "status": "success", "venue": "Zoo", "rooms": ["Penguin", "Hippo"] }
@@ -109,7 +109,6 @@ Of these commands, `request`, `change`, `cancel`, and `list` will produce output
 { "status": "success", "venue": "Gardens", "rooms": ["Figtree"] }
 { "status": "success", "venue": "Zoo", "rooms": ["Penguin"] }
 { "status": "success", "venue": "Zoo", "rooms": ["Penguin"] }
-{ "status": "success" }
 { "status": "rejected" }
 [ { "room": "Penguin", "reservations": [
     { "id": "CSE Autumn Ball", "start": "2019-03-25", "end": "2019-03-26" },
@@ -124,13 +123,13 @@ Of these commands, `request`, `change`, `cancel`, and `list` will produce output
 
 Note that all commands produce a JSON object as output, except for `list` that produces a JSON array.
 
-For commands that do not always succeed, the `status` field indicates whether the result was successful. If a reservation request, change, or cancellation cannot be fulfilled, the status should be `rejected`. In the case of such a rejection, no reservations should be added, changed or deleted. You can assume `list` always has a valid venue, and `room` is not used to add a room that has already been added.
+For commands that do not always succeed, the `status` field indicates whether the result was successful. If a reservation request or change cannot be fulfilled, the status should be `rejected`. In the case of such a rejection, no reservations should be added, changed or deleted. You can assume `change` and `cancel` have identifiers for existing reservations, `list` has a valid venue, and `room` is not used to add a room that has already been added.
 
 ## Hints
 
-* Focus on the requirements as given.
+* Focus on the requirements as given. A solution that tries to satisfy requirements that weren't given is not necessarily a better solution.
 
-* The only data structures you will need are lists.
+* The only data structures you will need are lists. Structures like HashMaps are neither necessary nor improve your solution.
 
 * The JSON-Java library is intended for serialisation, not as an alternative to Java collections.
 
@@ -162,7 +161,7 @@ Marks for this assignment are allocated as follows:
 * Design: 3 marks
 * Style: 1 mark
 
-**Late penalty: 3 marks per day or part-day late off the mark obtainable for up to 2 (calendar) days after the due date**
+**Late penalty: 2 marks per day or part-day late off the mark obtainable for up to 3 (calendar) days after the due date**
 
 ## Assessment Criteria
 
@@ -172,4 +171,4 @@ Marks for this assignment are allocated as follows:
 
 ## Plagiarism
 
-Remember that ALL work submitted for this assignment must be your own work and no code sharing or copying is allowed. You may use code from textbooks or the Internet only with suitable attribution of the source in your program. You should carefully read the UNSW policy on academic integrity and plagiarism, noting, in particular, that collusion (working together on an assignment, or sharing parts of assignment solutions) is a form of plagiarism.
+Remember that **ALL** work submitted for this assignment must be your own work and no code sharing or copying is allowed. You may use code from textbooks or the Internet only with suitable attribution of the source in your program. You should carefully read the UNSW policy on academic integrity and plagiarism, noting, in particular, that collusion (working together on an assignment, or sharing parts of assignment solutions) is a form of plagiarism.
