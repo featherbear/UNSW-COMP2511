@@ -1,6 +1,6 @@
 package staff;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  * A staff member
@@ -10,11 +10,11 @@ import java.util.Date;
  */
 public class StaffMember {
 	private String name;
-	private float salary;
-	private Date hireStart;
-	private Date endDate;
+	private double salary;
+	private LocalDate hireStart;
+	private LocalDate endDate;
 
-	public StaffMember(String name, float salary, Date hireStart, Date endDate) {
+	public StaffMember(String name, double salary, LocalDate hireStart, LocalDate endDate) {
 		this.name = name;
 		this.salary = salary;
 		this.hireStart = hireStart;
@@ -25,15 +25,15 @@ public class StaffMember {
 		return name;
 	}
 
-	public float getSalary() {
+	public double getSalary() {
 		return salary;
 	}
 
-	public Date getHireStart() {
+	public LocalDate getHireStart() {
 		return hireStart;
 	}
 
-	public Date getEndDate() {
+	public LocalDate getEndDate() {
 		return endDate;
 	}
 

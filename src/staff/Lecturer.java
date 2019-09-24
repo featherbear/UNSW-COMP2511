@@ -1,12 +1,12 @@
 package staff;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Lecturer extends StaffMember {
 	private String school;
 	private char status;
 
-	Lecturer(String name, float salary, Date hireStart, Date endDate, String school, char status) {
+	public Lecturer(String name, double salary, LocalDate hireStart, LocalDate endDate, String school, char status) {
 		super(name, salary, hireStart, endDate);
 		this.school = school;
 		this.status = status;
