@@ -16,7 +16,9 @@ public class StaffTest {
 
 		assert staff1.equals(staff1_copy);
 		assert !staff1.equals(staff2);
-		
+		assert !staff1.equals(null);
+		assert !staff2.equals(null);
+
 		System.out.println("staff1 - " + staff1);
 		System.out.println("staff1_copy - " + staff1_copy);
 		System.out.println("staff2 - " + staff2);
@@ -30,10 +32,17 @@ public class StaffTest {
 
 		assert lec1.equals(lec1_copy);
 		assert !lec1.equals(lec2);
-		
+
+                assert !lec1.equals(null);
+                assert !lec2.equals(null);
+
 		System.out.println("lec1 - " + lec1);
 		System.out.println("lec1_copy - " + lec1_copy);
 		System.out.println("lec2 - " + lec2);
+
+
+		assert(!lec1.equals(staff1));
+		assert(!staff1.equals(lec1));
 
 		System.out.println("WE DID IT!");
 

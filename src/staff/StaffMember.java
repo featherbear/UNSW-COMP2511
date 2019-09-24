@@ -60,8 +60,10 @@ public class StaffMember {
 	}
 
 	@Override
-	public boolean equals(Object cmp) {
-		StaffMember s = (StaffMember) cmp;
+	public boolean equals(Object obj) {
+		if (obj == null) return false;
+		if (this.getClass() != obj.getClass()) return false;
+		StaffMember s = (StaffMember) obj;
 		return s.getName().equals(this.name) && s.getEndDate().equals(this.endDate)
 				&& s.getHireStart().equals(this.hireStart) && s.getSalary() == this.salary;
 	}
