@@ -1,8 +1,8 @@
 ---
-title: "Inheritance"
+title: "Lecture 02"
 date: 2019-09-18T16:00:00+10:00
 
-description: "Lecture 02"
+description: "Inheritance"
 categories: ["Lectures", "Java"]
 hiddenFromHomePage: false
 postMetaInFooter: false
