@@ -2,6 +2,7 @@
 title: "Lecture 01"
 date: 2019-09-17T14:00:00+10:00
 
+description: "Introduction to Java"
 categories: ["Lectures", "Java"]
 hiddenFromHomePage: false
 postMetaInFooter: false
