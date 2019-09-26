@@ -14,6 +14,7 @@ public class CourseOffering {
         this.term = term;
         this.sessions = new ArrayList<>();
         this.enrolments = new ArrayList<>();
+        this.course.addOffering(this);
     }
 
     public void addSession(Session session) {

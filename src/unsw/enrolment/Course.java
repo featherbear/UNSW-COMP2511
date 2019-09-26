@@ -26,6 +26,10 @@ public class Course {
         prereqs.add(course);
     }
 
+    public void addOffering(CourseOffering offering) {
+        courseOfferings.add(offering);
+    }
+
     public String getCourseCode() {
         return courseCode;
     }
