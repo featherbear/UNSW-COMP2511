@@ -33,16 +33,19 @@ public class StaffTest {
 		assert lec1.equals(lec1_copy);
 		assert !lec1.equals(lec2);
 
-                assert !lec1.equals(null);
-                assert !lec2.equals(null);
+		assert !lec1.equals(null);
+		assert !lec2.equals(null);
 
 		System.out.println("lec1 - " + lec1);
 		System.out.println("lec1_copy - " + lec1_copy);
 		System.out.println("lec2 - " + lec2);
 
+		assert (!lec1.equals(staff1));
+		assert (!staff1.equals(lec1));
 
-		assert(!lec1.equals(staff1));
-		assert(!staff1.equals(lec1));
+		{
+			assert (staff1.toString().contentEquals(staff2.toString()));
+		}
 
 		System.out.println("WE DID IT!");
 
