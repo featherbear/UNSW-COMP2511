@@ -13,7 +13,7 @@
 
 An individual repository for this lab has been created for you here (replace z5555555 with your own zID):
 
-https://gitlab.cse.unsw.edu.au/z5555555/19T2-cs2511-lab03
+https://gitlab.cse.unsw.edu.au/z5555555/19T3-cs2511-lab03
 
 ## Exercise
 
