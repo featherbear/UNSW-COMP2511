@@ -5,6 +5,10 @@ import staff.StaffMember;
 import java.time.LocalDate;
 
 public class StaffTest {
+	public static void printStaffDetails(StaffMember s) {
+		System.out.println(s.toString());
+	}
+
 	public static void main(String[] args) {
 
 		StaffMember staff1 = new StaffMember("Jane Citizen", 12.50, java.time.LocalDate.of(1970, 1, 1),
@@ -19,10 +23,10 @@ public class StaffTest {
 		assert !staff1.equals(null);
 		assert !staff2.equals(null);
 
-		System.out.println("staff1 - " + staff1);
-		System.out.println("staff1_copy - " + staff1_copy);
-		System.out.println("staff2 - " + staff2);
-
+		printStaffDetails(staff1);
+		printStaffDetails(staff1_copy);
+		printStaffDetails(staff2);
+		
 		Lecturer lec1 = new Lecturer("Aye Bee", 48.24, java.time.LocalDate.of(1970, 1, 2),
 				java.time.LocalDate.of(1970, 1, 2), "Sea Ess Eee", 'A');
 		Lecturer lec1_copy = new Lecturer("Aye Bee", 48.24, java.time.LocalDate.of(1970, 1, 2),
@@ -36,9 +40,12 @@ public class StaffTest {
 		assert !lec1.equals(null);
 		assert !lec2.equals(null);
 
-		System.out.println("lec1 - " + lec1);
-		System.out.println("lec1_copy - " + lec1_copy);
-		System.out.println("lec2 - " + lec2);
+		printStaffDetails(lec1);
+		printStaffDetails(lec1_copy);
+		printStaffDetails(lec2);
+		
+		assert (!lec1.equals(staff1));
+		assert (!staff1.equals(lec1));
 
 		assert (!lec1.equals(staff1));
 		assert (!staff1.equals(lec1));
