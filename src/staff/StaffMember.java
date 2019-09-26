@@ -21,37 +21,59 @@ public class StaffMember {
 		this.endDate = endDate;
 	}
 
+	/**
+	 * Returns the staff member's name
+	 * 
+	 * @return String
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * Returns the staff's salary
+	 * 
+	 * @return double
+	 */
 	public double getSalary() {
 		return salary;
 	}
 
+	/**
+	 * Returns the date when the staff was hired
+	 * 
+	 * @return java.time.LocalDate
+	 */
 	public LocalDate getHireStart() {
 		return hireStart;
 	}
 
+	/**
+	 * Returns the date the staff finished working
+	 * 
+	 * @return java.time.LocalDate
+	 */
 	public LocalDate getEndDate() {
 		return endDate;
 	}
 
-//	public void setName(String name) {
-//		this.name = name;
-//	}
-//
-//	public void setSalary(float salary) {
-//		this.salary = salary;
-//	}
-//
-//	public void setHireStart(Date hireStart) {
-//		this.hireStart = hireStart;
-//	}
-//
-//	public void setEndDate(Date endDate) {
-//		this.endDate = endDate;
-//	}
+	/* No */
+
+	// public void setName(String name) {
+	// this.name = name;
+	// }
+	//
+	// public void setSalary(float salary) {
+	// this.salary = salary;
+	// }
+	//
+	// public void setHireStart(Date hireStart) {
+	// this.hireStart = hireStart;
+	// }
+	//
+	// public void setEndDate(Date endDate) {
+	// this.endDate = endDate;
+	// }
 
 	@Override
 	public String toString() {
@@ -61,8 +83,10 @@ public class StaffMember {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj == null) return false;
-		if (this.getClass() != obj.getClass()) return false;
+		if (obj == null)
+			return false;
+		if (this.getClass() != obj.getClass())
+			return false;
 		StaffMember s = (StaffMember) obj;
 		return s.getName().equals(this.name) && s.getEndDate().equals(this.endDate)
 				&& s.getHireStart().equals(this.hireStart) && s.getSalary() == this.salary;

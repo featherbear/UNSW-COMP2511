@@ -12,18 +12,35 @@ public class Lecturer extends StaffMember {
 		this.status = status;
 	}
 
+	/**
+	 * Returns the school that the lecturer works in
+	 * @return String
+	 */
 	public String getSchool() {
 		return this.school;
 	}
 
+	/**
+	 * Returns the academic status of the lecturer
+	 * @return char
+	 */
 	public char getStatus() {
 		return this.status;
 	}
 
+	
+	/**
+	 * Sets the academic status of the lecturer
+	 * @param new_status
+	 */
 	public void setStatus(char new_status) {
 		this.status = new_status;
 	}
 
+	/**
+	 * ¯\_(ツ)_/¯
+	 * @return success: true/false
+	 */
 	public boolean PROMOTE_YAY() {
 		switch (this.status) {
 		case 'A':
