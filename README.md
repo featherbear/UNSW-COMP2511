@@ -9,6 +9,24 @@
 * Understand the OO principles abstraction, encapsulation and inheritance
 * Become familiar with the Java API
 
+## Project Partners
+
+Under the guidance of your tutors, arrange yourselves into pairs for the project. Your tutors can help you find a partner if you don't already have one.
+
+You will need to register a group on WebCMS with both you and your partner in it by **Friday** of this week. Even if you choose to work alone, you still need to register a group. To do this, **one** member needs to register it on the course website:
+
+1. Click on **Groups** on the left.
+2. Click on **Create**
+3. Give the group a name of the form *TUTE*-*name*, where *TUTE* is the code for the lab as on the timetable on the course website and *name* is a name for your team (e.g. T13A-cool_kids). The name portion can be whatever you want (within reason) but must contain only alphanumeric characters and underscores (no whitespace or special characters).
+4. Ensure that the group type is **Project**.
+5. Click **Create** to create the group.
+
+The other member of your partnership can then **join** this group:
+
+1. Click on **Groups** on the left.
+2. Find your group in the list.
+3. Click **Join**
+
 ## Setup
 
 An individual repository for this lab has been created for you here (replace z5555555 with your own zID):
