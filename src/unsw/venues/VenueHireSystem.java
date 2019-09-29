@@ -146,7 +146,7 @@ public class VenueHireSystem {
 
 				JSONArray rooms = new JSONArray();
 				for (Room room : booking.getRooms()) {
-					room.getName();
+					rooms.put(room.getName());
 				}
 				result.put("rooms", rooms);
 
@@ -176,7 +176,7 @@ public class VenueHireSystem {
 
 					JSONArray rooms = new JSONArray();
 					for (Room room : booking.getRooms()) {
-						room.getName();
+						rooms.put(room.getName());
 					}
 					result.put("rooms", rooms);
 
