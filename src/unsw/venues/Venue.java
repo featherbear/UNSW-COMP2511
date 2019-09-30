@@ -48,6 +48,15 @@ public class Venue {
 		this.rooms.add(newRoom);
 	}
 
+	public void removeRoom(Room room) {
+		this.rooms.remove(room);
+	}
+
+	public void removeRoom(String room) {
+		// Assume `room` exists
+		this.removeRoom(Room.getRoomByName(this.rooms, room));
+	}
+
 	/**
 	 * @return Venue name
 	 */
@@ -59,7 +68,11 @@ public class Venue {
 	 * @return Venue rooms
 	 */
 	public ArrayList<Room> getRooms() {
-		return this.rooms;
+		// Jenn thinks that we shouldn't put the cloning of the list here.
+		ArrayList<Room> results = new ArrayList<Room>(this.rooms.size());
+		for (Room room : this.rooms)
+			results.add(room);
+		return results;
 	}
 
 	/**
