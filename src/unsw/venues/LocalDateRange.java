@@ -49,6 +49,11 @@ public class LocalDateRange {
 	}
 
 	@Override
+	public String toString() {
+		return this.dateStart.toString() + "->" + this.dateEnd.toString();
+	}
+
+	@Override
 	public boolean equals(Object obj) {
 		if (obj == null)
 			return false;
