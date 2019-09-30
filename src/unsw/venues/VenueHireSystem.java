@@ -235,8 +235,10 @@ public class VenueHireSystem {
 		Scanner sc = new Scanner(System.in);
 
 		while (sc.hasNextLine()) {
-			String line = sc.nextLine();
-			if (!line.trim().equals("")) {
+			String line = sc.nextLine().trim();
+			if (!line.equals("")) {
+				if (line.startsWith("#"))
+					continue;
 				JSONObject command = new JSONObject(line);
 				system.processCommand(command);
 			}
