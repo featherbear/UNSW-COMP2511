@@ -32,7 +32,7 @@ public class Venue {
 	}
 
 	/**
-	 * Creates a new Room in the venue. Throws
+	 * Creates a new Room in the venue.
 	 * 
 	 * @param name
 	 * @param size
@@ -48,10 +48,20 @@ public class Venue {
 		this.rooms.add(newRoom);
 	}
 
+	/**
+	 * Remove a room from the venue
+	 * 
+	 * @param room
+	 */
 	public void removeRoom(Room room) {
 		this.rooms.remove(room);
 	}
 
+	/**
+	 * Remove a room from the venue
+	 * 
+	 * @param room
+	 */
 	public void removeRoom(String room) {
 		// Assume `room` exists
 		this.removeRoom(Room.getRoomByName(this.rooms, room));
@@ -161,6 +171,9 @@ public class Venue {
 		return this._canBook(dateRange, small, medium, large, 0, 0, 0);
 	}
 
+	/**
+	 * @return bookings
+	 */
 	public ArrayList<Booking> getBookings() {
 		return this.bookings;
 	}
@@ -209,10 +222,19 @@ public class Venue {
 
 	}
 
+	/**
+	 * Helper function - Sort bookings
+	 */
 	private void sortBookings() {
 		this.bookings.sort((Booking b1, Booking b2) -> b1.getStartDate().compareTo(b2.getStartDate()));
 	}
 
+	/**
+	 * Find bookings that utilise a given room
+	 * 
+	 * @param room
+	 * @return ArrayList<Booking>
+	 */
 	public ArrayList<Booking> getBookingsByRoom(Room room) {
 		ArrayList<Booking> result = new ArrayList<Booking>();
 		for (Booking booking : this.bookings) {
@@ -223,16 +245,33 @@ public class Venue {
 		return result;
 	}
 
+	/**
+	 * Find bookings that utilise a given room
+	 * 
+	 * @param room
+	 * @return ArrayList<Booking>
+	 */
 	public ArrayList<Booking> getBookingsByRoom(String room) {
 		return this.getBookingsByRoom(Room.getRoomByName(this.rooms, room));
 
 	}
 
+	/**
+	 * Remove a booking from the venue bookings
+	 * 
+	 * @param booking
+	 */
 	public void removeBooking(Booking booking) {
 		// Assume `booking` is valid
 		this.bookings.remove(booking);
 	}
 
+	/**
+	 * Get bookings that are not used within a LocateDateRange
+	 * 
+	 * @param dateRange
+	 * @return ArrayList<Room>
+	 */
 	public ArrayList<Room> getFreeRooms(LocalDateRange dateRange) {
 		ArrayList<Room> result = this.getRooms();
 		for (Booking booking : Booking.getBookingsByDateRange(this.bookings, dateRange)) {
