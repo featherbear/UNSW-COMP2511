@@ -204,8 +204,13 @@ public class Venue {
 		}
 
 		this.bookings.add(booking);
+		this.sortBookings();
 		return booking;
 
+	}
+
+	private void sortBookings() {
+		this.bookings.sort((Booking b1, Booking b2) -> b1.getStartDate().compareTo(b2.getStartDate()));
 	}
 
 	public ArrayList<Booking> getBookingsByRoom(Room room) {
