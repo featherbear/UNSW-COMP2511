@@ -3,7 +3,6 @@ package unsw.venues;
 import java.util.ArrayList;
 
 import unsw.venues.exceptions.InsufficientRooms;
-import unsw.venues.exceptions.RoomExists;
 
 public class Venue {
 	private String name;
@@ -38,11 +37,7 @@ public class Venue {
 	 * @param size
 	 */
 	public void addRoom(String name, Size size) {
-		// Check that the given room name doesn't exist
-		for (Room room : this.rooms) {
-			if (room.getName().equals(name))
-				throw new RoomExists();
-		}
+		// Assume `name` is unique
 
 		Room newRoom = new Room(name, size, this);
 		this.rooms.add(newRoom);
@@ -82,6 +77,7 @@ public class Venue {
 		ArrayList<Room> results = new ArrayList<Room>(this.rooms.size());
 		for (Room room : this.rooms)
 			results.add(room);
+
 		return results;
 	}
 
@@ -175,7 +171,11 @@ public class Venue {
 	 * @return bookings
 	 */
 	public ArrayList<Booking> getBookings() {
-		return this.bookings;
+		ArrayList<Booking> results = new ArrayList<Booking>(this.bookings.size());
+		for (Booking booking : this.bookings)
+			results.add(booking);
+
+		return results;
 	}
 
 	/**
