@@ -136,9 +136,19 @@ public class Venue {
 		for (Booking booking : this.bookings) {
 			if (booking.getDateRange().overlaps(dateRange)) {
 
-				// TEST
-				if (booking.getEndDate().isBefore(dateRange.getEnd()))
+				// If booked rooms are within the dateRange, but they end within the range,
+				// then don't count the room as utilised
+
+				/*
+				 * 
+				 * [XXXX......XX............XXXX]XX
+				 * 
+				 */
+
+				//
+				if (booking.getEndDate().isBefore(dateRange.getEnd())) {
 					continue;
+				}
 				//
 
 				nSmall -= booking.getSmallCount();
