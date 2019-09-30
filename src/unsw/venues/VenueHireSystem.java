@@ -127,7 +127,6 @@ public class VenueHireSystem {
 	}
 
 	public JSONObject request(String id, LocalDate start, LocalDate end, int small, int medium, int large) {
-		JSONObject result = new JSONObject();
 
 		/*
 		 * Ignored considerations (safe system) - startDate is after endDate - duplicate
@@ -139,26 +138,33 @@ public class VenueHireSystem {
 		for (Venue venue : this.venues) {
 
 			if (venue.canBook(dateRange, small, medium, large)) {
-
-				Booking booking = venue.addBooking(id, dateRange, small, medium, large);
-
-				result.put("venue", venue.getName());
-
-				JSONArray rooms = new JSONArray();
-				for (Room room : booking.getRooms()) {
-					rooms.put(room.getName());
-				}
-				result.put("rooms", rooms);
-
-				result.put("status", "success");
-
-				return result;
-
+				return transactRequest(venue, id, dateRange, small, medium, large);
 			}
 		}
 
+		JSONObject result = new JSONObject();
 		result.put("status", "rejected");
 		return result;
+	}
+
+	private JSONObject transactRequest(Venue venue, String id, LocalDateRange dateRange, int small, int medium,
+			int large) {
+		JSONObject result = new JSONObject();
+
+		Booking booking = venue.addBooking(id, dateRange, small, medium, large);
+
+		result.put("venue", venue.getName());
+
+		JSONArray rooms = new JSONArray();
+		for (Room room : booking.getRooms()) {
+			rooms.put(room.getName());
+		}
+		result.put("rooms", rooms);
+
+		result.put("status", "success");
+
+		return result;
+
 	}
 
 	public JSONObject change(String id, LocalDate start, LocalDate end, int small, int medium, int large) {
@@ -183,12 +189,35 @@ public class VenueHireSystem {
 					result.put("status", "success");
 
 					return result;
+				} else {
+					// Change failed - not enough rooms to accomodate new rooms
+
+					/*
+					 * To remove any ambiguity, all reservation requests and changes are fulfilled
+					 * as follows: each venue is checked (in order of definition in the input) to
+					 * determine whether it can satisfy all requested rooms, and if so, the first
+					 * available rooms (again in order of definition in the input) are assigned to
+					 * the reservation.
+					 * 
+					 * This is the procedure you must follow for assigning rooms for both requests
+					 * and changes. There are no requirements that the venue must remain the same.
+					 * -- Rob Everest (https://piazza.com/class/k083hgcwt215x8?cid=91)
+					 */
+					for (Venue newVenue : this.venues) {
+						if (venue == newVenue)
+							continue;
+						if (newVenue.canBook(dateRange, small, medium, large)) {
+							venue.removeBooking(booking);
+							return this.transactRequest(newVenue, id, dateRange, small, medium, large);
+						}
+
+					}
+
+					result.put("status", "rejected");
+					return result;
 				}
 
-				result.put("status", "rejected");
-				return result;
 			}
-
 		}
 
 		result.put("status", "rejected");
