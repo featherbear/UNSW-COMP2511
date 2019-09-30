@@ -170,21 +170,21 @@ public class Venue {
 
 		Booking booking = new Booking(this, id, dateRange);
 		if (small > 0) {
-			ArrayList<Room> smallRooms = Room.getRoomsBySize(this.rooms, Size.SMALL);
+			ArrayList<Room> smallRooms = Room.getRoomsBySize(this.getFreeRooms(dateRange), Size.SMALL);
 			for (int i = 0; i < small; i++) {
 				booking.addRoom(smallRooms.get(i));
 			}
 		}
 
 		if (medium > 0) {
-			ArrayList<Room> mediumRooms = Room.getRoomsBySize(this.rooms, Size.MEDIUM);
+			ArrayList<Room> mediumRooms = Room.getRoomsBySize(this.getFreeRooms(dateRange), Size.MEDIUM);
 			for (int i = 0; i < medium; i++) {
 				booking.addRoom(mediumRooms.get(i));
 			}
 		}
 
 		if (large > 0) {
-			ArrayList<Room> largeRooms = Room.getRoomsBySize(this.rooms, Size.LARGE);
+			ArrayList<Room> largeRooms = Room.getRoomsBySize(this.getFreeRooms(dateRange), Size.LARGE);
 			for (int i = 0; i < large; i++) {
 				booking.addRoom(largeRooms.get(i));
 			}
