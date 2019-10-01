@@ -1,0 +1,83 @@
+{
+  "venue": "EventCancel",
+  "rooms": [
+    "A",
+    "B"
+  ],
+  "status": "success"
+}
+[
+  {
+    "reservations": [{
+      "start": "1111-11-11",
+      "end": "1111-11-11",
+      "id": "1"
+    }],
+    "room": "A"
+  },
+  {
+    "reservations": [{
+      "start": "1111-11-11",
+      "end": "1111-11-11",
+      "id": "1"
+    }],
+    "room": "B"
+  },
+  {
+    "reservations": [],
+    "room": "C"
+  }
+]
+[
+  {
+    "reservations": [],
+    "room": "A"
+  },
+  {
+    "reservations": [],
+    "room": "B"
+  },
+  {
+    "reservations": [],
+    "room": "C"
+  }
+]
+{
+  "venue": "EventCancel",
+  "rooms": [
+    "A",
+    "B"
+  ],
+  "status": "success"
+}
+{"status": "rejected"}
+{
+  "venue": "EventCancel",
+  "rooms": [
+    "B",
+    "C"
+  ],
+  "status": "success"
+}
+[
+  {
+    "reservations": [],
+    "room": "A"
+  },
+  {
+    "reservations": [{
+      "start": "1111-11-11",
+      "end": "1111-11-11",
+      "id": "3"
+    }],
+    "room": "B"
+  },
+  {
+    "reservations": [{
+      "start": "1111-11-11",
+      "end": "1111-11-11",
+      "id": "3"
+    }],
+    "room": "C"
+  }
+]

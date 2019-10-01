@@ -1,0 +1,47 @@
+{
+  "venue": "VenueOne",
+  "rooms": ["A"],
+  "status": "success"
+}
+[{
+  "reservations": [{
+    "start": "1111-11-11",
+    "end": "1111-11-11",
+    "id": "FirstVenueOne"
+  }],
+  "room": "A"
+}]
+[
+  {
+    "reservations": [],
+    "room": "A"
+  },
+  {
+    "reservations": [],
+    "room": "B"
+  }
+]
+{
+  "venue": "VenueOne",
+  "rooms": ["A"],
+  "status": "success"
+}
+[{
+  "reservations": [{
+    "start": "1111-11-11",
+    "end": "1111-11-11",
+    "id": "FirstVenueOne"
+  }],
+  "room": "A"
+}]
+[
+  {
+    "reservations": [],
+    "room": "A"
+  },
+  {
+    "reservations": [],
+    "room": "B"
+  }
+]
+{"status": "rejected"}

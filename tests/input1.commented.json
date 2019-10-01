@@ -1,0 +1,27 @@
+# Check that rooms of different sizes do not account as other room sizes
+## First create the rooms
+{ "command": "room", "venue": "DifferentSizesAreSeparate", "room": "A", "size": "small" }
+{ "command": "room", "venue": "DifferentSizesAreSeparate", "room": "C", "size": "medium" }
+{ "command": "room", "venue": "DifferentSizesAreSeparate", "room": "B", "size": "small" }
+## Check that rooms have been created properly
+## Also, check that rooms are shown in order of definition
+{ "command": "list", "venue": "DifferentSizesAreSeparate" }
+## Try booking two medium rooms, should error
+{ "command": "request", "id": "TwoMedium", "start": "1111-11-11", "end": "1111-11-11" , "small": 0, "medium": 2, "large": 0 }
+## Try booking one large room, should error
+{ "command": "request", "id": "OneLarge", "start": "1111-11-11", "end": "1111-11-11" , "small": 0, "medium": 0, "large": 1 }
+## Try booking one small room, should succeed with A
+{ "command": "request", "id": "OneSmall", "start": "1111-11-11", "end": "1111-11-11" , "small": 1, "medium": 0, "large": 0 }
+{ "command": "list", "venue": "DifferentSizesAreSeparate" }
+## Try booking two small rooms, should error
+{ "command": "request", "id": "TwoSmall", "start": "1111-11-11", "end": "1111-11-11" , "small": 2, "medium": 0, "large": 0 }
+## Then book one small room and one medium room, should succeed with B and C
+{ "command": "request", "id": "OneSmallOneMedium", "start": "1111-11-11", "end": "1111-11-11" , "small": 1, "medium": 1, "large": 0 }
+{ "command": "list", "venue": "DifferentSizesAreSeparate" }
+##
+## * a few moments later *
+##
+## Try booking on a different date, all three at once.
+{ "command": "request", "id": "AllThreeDifferentDate", "start": "1111-11-12", "end": "1111-11-12" , "small": 2, "medium": 1, "large": 0 }
+{ "command": "list", "venue": "DifferentSizesAreSeparate" }
+
