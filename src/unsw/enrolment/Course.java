@@ -19,6 +19,7 @@ public class Course {
     public Course(String courseCode, String title) {
         this.courseCode = courseCode;
         this.prereqs = new ArrayList<Course>();
+        this.courseOfferings = new ArrayList<CourseOffering>();
     }
 
 
