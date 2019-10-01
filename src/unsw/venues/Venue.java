@@ -111,57 +111,22 @@ public class Venue {
 	 * @param offset - number of small rooms
 	 * @param offset - number of medium rooms
 	 * @param offset - number of large rooms
-	 * @return Bookability
+	 * @return boolean
 	 */
 	public boolean _canBook(LocalDateRange dateRange, int small, int medium, int large, int small_offset,
 			int medium_offset, int large_offset) {
-		int nSmall = 0;
-		int nMedium = 0;
-		int nLarge = 0;
 
-		for (Room room : this.rooms) {
-			switch (room.getSize()) {
-			case SMALL:
-				nSmall++;
-				break;
-			case MEDIUM:
-				nMedium++;
-				break;
-			case LARGE:
-				nLarge++;
-				break;
-			}
-		}
+		ArrayList<Room> rooms = this.getRooms(); // Use the method as it creates a copy
 
 		for (Booking booking : this.bookings) {
 			if (booking.getDateRange().overlaps(dateRange)) {
-
-				// If booked rooms are within the dateRange, but they end within the range,
-				// then don't count the room as utilised
-
-				/*
-				 * 
-				 * [XXXX......XX............XXXX]XX
-				 * 
-				 */
-
-				//
-				if (booking.getEndDate().isBefore(dateRange.getEnd())) {
-					continue;
-				}
-				//
-
-				nSmall -= booking.getSmallCount();
-				nMedium -= booking.getMediumCount();
-				nLarge -= booking.getLargeCount();
+				rooms.removeAll(booking.getRooms());
 			}
 		}
 
-		nSmall += small_offset;
-		nMedium += medium_offset;
-		nLarge += large_offset;
-
-		return !(small > nSmall || medium > nMedium || large > nLarge);
+		return !((small - small_offset) > Room.getRoomsBySize(rooms, Size.SMALL).size()
+				|| (medium - medium_offset) > Room.getRoomsBySize(rooms, Size.MEDIUM).size()
+				|| (large - large_offset) > Room.getRoomsBySize(rooms, Size.LARGE).size());
 	}
 
 	/**
@@ -171,7 +136,7 @@ public class Venue {
 	 * @param number of small rooms
 	 * @param number of medium rooms
 	 * @param number of large rooms
-	 * @return Bookability
+	 * @return boolean
 	 */
 	public boolean canBook(LocalDateRange dateRange, int small, int medium, int large) {
 		return this._canBook(dateRange, small, medium, large, 0, 0, 0);
@@ -199,44 +164,40 @@ public class Venue {
 	 * @return Booking
 	 */
 	public Booking addBooking(String id, LocalDateRange dateRange, int small, int medium, int large) {
-		if (!(this.canBook(dateRange, small, medium, large)))
+		if (!(this.canBook(dateRange, small, medium, large))) {
 			throw new InsufficientRooms();
+		}
 
 		// Assume small > 0 || medium > 0 || large > 0
 
+		ArrayList<Room> freeRooms = this.getFreeRooms(dateRange);
+
 		Booking booking = new Booking(this, id, dateRange);
 		if (small > 0) {
-			ArrayList<Room> smallRooms = Room.getRoomsBySize(this.getFreeRooms(dateRange), Size.SMALL);
+			ArrayList<Room> smallRooms = Room.getRoomsBySize(freeRooms, Size.SMALL);
 			for (int i = 0; i < small; i++) {
 				booking.addRoom(smallRooms.get(i));
 			}
 		}
 
 		if (medium > 0) {
-			ArrayList<Room> mediumRooms = Room.getRoomsBySize(this.getFreeRooms(dateRange), Size.MEDIUM);
+			ArrayList<Room> mediumRooms = Room.getRoomsBySize(freeRooms, Size.MEDIUM);
 			for (int i = 0; i < medium; i++) {
 				booking.addRoom(mediumRooms.get(i));
 			}
 		}
 
 		if (large > 0) {
-			ArrayList<Room> largeRooms = Room.getRoomsBySize(this.getFreeRooms(dateRange), Size.LARGE);
+			ArrayList<Room> largeRooms = Room.getRoomsBySize(freeRooms, Size.LARGE);
 			for (int i = 0; i < large; i++) {
 				booking.addRoom(largeRooms.get(i));
 			}
 		}
 
 		this.bookings.add(booking);
-		this.sortBookings();
+		this.bookings.sort((Booking b1, Booking b2) -> b1.getStartDate().compareTo(b2.getStartDate()));
 		return booking;
 
-	}
-
-	/**
-	 * Helper function - Sort bookings
-	 */
-	private void sortBookings() {
-		this.bookings.sort((Booking b1, Booking b2) -> b1.getStartDate().compareTo(b2.getStartDate()));
 	}
 
 	/**
