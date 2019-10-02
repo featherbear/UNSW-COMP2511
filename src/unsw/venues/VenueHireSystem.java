@@ -205,6 +205,7 @@ public class VenueHireSystem {
 						continue;
 
 					if (newVenue.canBook(dateRange, small, medium, large)) {
+						venue.removeBooking(booking);
 						booking = newVenue.addBooking(id, dateRange, small, medium, large);
 						return generateSuccess(booking);
 					}
