@@ -1,0 +1,32 @@
+{ "command": "room", "venue": "J17", "room": "kora", "size": "large" }
+{ "command": "room", "venue": "J17", "room": "sitar", "size": "large" }
+{ "command": "room", "venue": "J17", "room": "horn", "size": "small" }
+{ "command": "room", "venue": "J17", "room": "bugle", "size": "small" }
+{ "command": "room", "venue": "J17", "room": "oboe", "size": "large" }
+{ "command": "room", "venue": "J17", "room": "flute", "size": "large" }
+{ "command": "room", "venue": "J17", "room": "cello", "size": "small" }
+{ "command": "room", "venue": "J17", "room": "viola", "size": "small" }
+{ "command": "room", "venue": "K17", "room": "clavier", "size": "medium" }
+{ "command": "room", "venue": "K17", "room": "organ", "size": "medium" }
+{ "command": "room", "venue": "K17", "room": "piano", "size": "small" }
+{ "command": "room", "venue": "K17", "room": "tabla", "size": "large" }
+{ "command": "room", "venue": "K17", "room": "bongo", "size": "large" }
+{ "command": "room", "venue": "K17", "room": "drum", "size": "large" }
+{ "command": "room", "venue": "K17", "room": "oud", "size": "medium" }
+{ "command": "room", "venue": "K17", "room": "lyre", "size": "medium" }
+{ "command": "list", "venue": "K17" }
+{ "command": "list", "venue": "J17" }
+{ "command": "request", start: "2019-01-01", end: "2019-12-31", id: "BadGuyTakesOverCSE", "small": 99, "medium": 99, "large": 99 }
+{ "command": "request", start: "2019-09-30", end: "2019-10-04", id: "COMP2533", "small": 0, "medium": 0, "large": 7 }
+{ "command": "request", start: "2019-09-30", end: "2019-10-04", id: "COMP2533", "small": 3, "medium": 0, "large": 3 }
+{ "command": "list", "venue": "K17" }
+{ "command": "list", "venue": "J17" }
+{ "command": "change", start: "2019-09-30", end: "2019-10-04", id: "COMP2533", "small": 0, "medium": 3, "large": 3 }
+{ "command": "request", start: "2019-09-30", end: "2019-10-04", id: "TakeThatCSEMuahHahahahahahaHAHAHA", "small": 1, "medium": 1, "large": 0 }
+{ "command": "change", start: "2019-10-07", end: "2019-10-11", id: "COMP2533", "small": 1, "medium": 4, "large": 3 }
+{ "command": "cancel", id: "TakeThatCSEMuahHahahahahahaHAHAHA" }
+{ "command": "list", "venue": "K17" }
+{ "command": "list", "venue": "J17" }
+{ "command": "change", start: "2019-09-30", end: "2019-10-04", id: "COMP2533", "small": 1, "medium": 4, "large": 3 }
+{ "command": "list", "venue": "K17" }
+{ "command": "list", "venue": "J17" }
