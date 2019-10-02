@@ -103,6 +103,8 @@ public class VenueHireSystem {
 
 	private void addRoom(String venue, String room, Size size) {
 		Venue venueObj = Venue.getVenueByName(this.venues, venue);
+
+		// Add Venue if it does not exist
 		if (venueObj == null) {
 			venueObj = new Venue(venue);
 			this.venues.add(venueObj);
@@ -116,10 +118,11 @@ public class VenueHireSystem {
 		for (Venue venue : this.venues) {
 			// Assume `id` is valid
 			Booking booking = Booking.getBookingById(venue.getBookings(), id);
-			if (booking != null) {
-				venue.removeBooking(booking);
-				return;
-			}
+			if (booking == null)
+				continue;
+
+			venue.removeBooking(booking);
+			return;
 		}
 	}
 
@@ -137,8 +140,9 @@ public class VenueHireSystem {
 	public JSONObject request(String id, LocalDate start, LocalDate end, int small, int medium, int large) {
 
 		/*
-		 * Ignored considerations (safe system) - startDate is after endDate - duplicate
-		 * id
+		 * Ignored considerations (safe system)
+		 * 
+		 * > startDate is after endDate > duplicate id
 		 */
 
 		LocalDateRange dateRange = new LocalDateRange(start, end);
@@ -190,7 +194,7 @@ public class VenueHireSystem {
 
 					return result;
 				} else {
-					// Change failed - not enough rooms to accomodate new rooms
+					// Change failed - not enough rooms to accommodate new rooms
 
 					/*
 					 * To remove any ambiguity, all reservation requests and changes are fulfilled

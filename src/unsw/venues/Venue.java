@@ -2,8 +2,6 @@ package unsw.venues;
 
 import java.util.ArrayList;
 
-import unsw.venues.exceptions.InsufficientRooms;
-
 public class Venue {
 	private String name;
 	private ArrayList<Room> rooms;
@@ -165,7 +163,7 @@ public class Venue {
 	 */
 	public Booking addBooking(String id, LocalDateRange dateRange, int small, int medium, int large) {
 		if (!(this.canBook(dateRange, small, medium, large))) {
-			throw new InsufficientRooms();
+			throw new Error("Insufficient Rooms");
 		}
 
 		// Assume small > 0 || medium > 0 || large > 0
