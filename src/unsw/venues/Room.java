@@ -75,4 +75,9 @@ public class Room {
 	public Venue getVenue() {
 		return this.venue;
 	}
+
+	@Override
+	public String toString() {
+		return this.name + " (" + this.size + ")";
+	}
 }

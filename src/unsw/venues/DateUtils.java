@@ -5,19 +5,18 @@ import java.time.LocalDate;
 public class DateUtils {
 
 	/**
-	 * Check if dateStart->dateEnd is within rangeStart->rangeEnd (inclusive)
+	 * Check if dateStart->dateEnd is within rangeStart->rangeEnd (inclusive).
+	 * rangeStart and rangeEnd is optional, but one must be present
 	 * 
 	 * @param dateStart
 	 * @param dateEnd
-	 * @param rangeStart
-	 * @param rangeEnd
+	 * @param rangeStart (optional)
+	 * @param rangeEnd   (optional)
 	 * @return boolean
 	 */
 	public static boolean dateRangeInDateRange(LocalDate dateStart, LocalDate dateEnd, LocalDate rangeStart,
 			LocalDate rangeEnd) {
 
-		if (dateStart == null && dateEnd == null)
-			return false;
 		if (rangeStart == null && rangeEnd == null)
 			return false;
 
@@ -47,15 +46,6 @@ public class DateUtils {
 	 */
 	public static boolean dateRangeOverlapsDateRange(LocalDate dateStart, LocalDate dateEnd, LocalDate rangeStart,
 			LocalDate rangeEnd) {
-
-		//
-
-		if (dateStart == null || dateEnd == null)
-			return false;
-		if (rangeStart == null || rangeEnd == null)
-			return false;
-
-		//
 
 		return ((dateStart.isBefore(rangeEnd) || dateStart.isEqual(rangeEnd))
 				&& (dateEnd.isAfter(rangeStart) || dateEnd.isEqual(rangeStart)));

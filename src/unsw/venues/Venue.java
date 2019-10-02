@@ -74,7 +74,7 @@ public class Venue {
 	 */
 	public ArrayList<Room> getRooms() {
 		// Jenn thinks that we shouldn't put the cloning of the list here.
-		ArrayList<Room> results = new ArrayList<Room>(this.rooms.size());
+		ArrayList<Room> results = new ArrayList<Room>(this.countRooms());
 		for (Room room : this.rooms)
 			results.add(room);
 
@@ -253,5 +253,29 @@ public class Venue {
 
 		return result;
 
+	}
+
+	/**
+	 * Count the number of rooms of a given size in the venue
+	 * 
+	 * @param size
+	 * @return number of rooms
+	 */
+	public int countRooms(Size size) {
+		return Room.getRoomsBySize(this.rooms, size).size();
+	}
+
+	/**
+	 * Count the number of rooms in the venue
+	 * 
+	 * @return number of rooms
+	 */
+	public int countRooms() {
+		return this.rooms.size();
+	}
+
+	@Override
+	public String toString() {
+		return this.name;
 	}
 }

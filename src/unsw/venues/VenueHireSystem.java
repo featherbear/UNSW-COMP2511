@@ -1,6 +1,3 @@
-/**
- *
- */
 package unsw.venues;
 
 import java.time.LocalDate;
@@ -126,6 +123,17 @@ public class VenueHireSystem {
 		}
 	}
 
+	/**
+	 * Perform a booking request
+	 * 
+	 * @param id
+	 * @param start
+	 * @param end
+	 * @param small
+	 * @param medium
+	 * @param large
+	 * @return JSONObject
+	 */
 	public JSONObject request(String id, LocalDate start, LocalDate end, int small, int medium, int large) {
 
 		/*
@@ -138,7 +146,8 @@ public class VenueHireSystem {
 		for (Venue venue : this.venues) {
 
 			if (venue.canBook(dateRange, small, medium, large)) {
-				return transactRequest(venue, id, dateRange, small, medium, large);
+				Booking booking = venue.addBooking(id, dateRange, small, medium, large);
+				return generateSuccess(booking);
 			}
 		}
 
@@ -147,26 +156,17 @@ public class VenueHireSystem {
 		return result;
 	}
 
-	private JSONObject transactRequest(Venue venue, String id, LocalDateRange dateRange, int small, int medium,
-			int large) {
-		JSONObject result = new JSONObject();
-
-		Booking booking = venue.addBooking(id, dateRange, small, medium, large);
-
-		result.put("venue", venue.getName());
-
-		JSONArray rooms = new JSONArray();
-		for (Room room : booking.getRooms()) {
-			rooms.put(room.getName());
-		}
-		result.put("rooms", rooms);
-
-		result.put("status", "success");
-
-		return result;
-
-	}
-
+	/**
+	 * Perform a change request
+	 * 
+	 * @param id
+	 * @param start
+	 * @param end
+	 * @param small
+	 * @param medium
+	 * @param large
+	 * @return JSONObject
+	 */
 	public JSONObject change(String id, LocalDate start, LocalDate end, int small, int medium, int large) {
 		JSONObject result = new JSONObject();
 
@@ -207,8 +207,8 @@ public class VenueHireSystem {
 						if (venue == newVenue)
 							continue;
 						if (newVenue.canBook(dateRange, small, medium, large)) {
-							venue.removeBooking(booking);
-							return this.transactRequest(newVenue, id, dateRange, small, medium, large);
+							booking = newVenue.addBooking(id, dateRange, small, medium, large);
+							return generateSuccess(booking);
 						}
 
 					}
@@ -251,9 +251,31 @@ public class VenueHireSystem {
 			}
 			roomJSON.put("reservations", reservationsJSON);
 
-			// Attach room json to result
+			// Attach room to result
 			result.put(roomJSON);
 		}
+
+		return result;
+	}
+
+	/**
+	 * Create a JSON success object for a booking
+	 * 
+	 * @param booking
+	 * @return JSONObject
+	 */
+	private JSONObject generateSuccess(Booking booking) {
+		JSONObject result = new JSONObject();
+
+		result.put("venue", booking.getVenue().getName());
+
+		JSONArray rooms = new JSONArray();
+		for (Room room : booking.getRooms()) {
+			rooms.put(room.getName());
+		}
+		result.put("rooms", rooms);
+
+		result.put("status", "success");
 
 		return result;
 	}
