@@ -8,7 +8,6 @@
 { "command": "list", "venue": "VenueOne" }
 { "command": "list", "venue": "VenueTwo" }
 ## Request a change to one small room - should not change
-## Or perhaps we should error
 { "command": "change", "id": "FirstVenueOne", "start": "1111-11-11", "end": "1111-11-11" , "small": 1, "medium": 0, "large": 0 }
 { "command": "list", "venue": "VenueOne" }
 { "command": "list", "venue": "VenueTwo" }
