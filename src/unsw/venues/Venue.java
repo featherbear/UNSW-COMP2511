@@ -2,8 +2,6 @@ package unsw.venues;
 
 import java.util.ArrayList;
 
-import unsw.venues.exceptions.InsufficientRooms;
-
 public class Venue {
 	private String name;
 	private ArrayList<Room> rooms;
@@ -74,7 +72,7 @@ public class Venue {
 	 */
 	public ArrayList<Room> getRooms() {
 		// Jenn thinks that we shouldn't put the cloning of the list here.
-		ArrayList<Room> results = new ArrayList<Room>(this.rooms.size());
+		ArrayList<Room> results = new ArrayList<Room>(this.countRooms());
 		for (Room room : this.rooms)
 			results.add(room);
 
@@ -104,26 +102,30 @@ public class Venue {
 	/**
 	 * Check if the Venue has enough rooms for a booking
 	 * 
-	 * @param date   range
-	 * @param number of small rooms
-	 * @param number of medium rooms
-	 * @param number of large rooms
-	 * @param offset - number of small rooms
-	 * @param offset - number of medium rooms
-	 * @param offset - number of large rooms
+	 * @param date          range
+	 * @param number        of small rooms
+	 * @param number        of medium rooms
+	 * @param number        of large rooms
+	 * @param offset_small  - number of small rooms
+	 * @param offset_medium - number of medium rooms
+	 * @param offset_large  - number of large rooms
 	 * @return boolean
 	 */
 	public boolean _canBook(LocalDateRange dateRange, int small, int medium, int large, int small_offset,
 			int medium_offset, int large_offset) {
 
-		ArrayList<Room> rooms = this.getRooms(); // Use the method as it creates a copy
+		// Use the `getRooms` method over `this.rooms` as it creates a copy
+		ArrayList<Room> rooms = this.getRooms();
 
 		for (Booking booking : this.bookings) {
+			// If a booking overlaps the date range, then consider all of the rooms as
+			// unavailable for the entire period
 			if (booking.getDateRange().overlaps(dateRange)) {
 				rooms.removeAll(booking.getRooms());
 			}
 		}
 
+		// Check that there are enough rooms for each size
 		return !((small - small_offset) > Room.getRoomsBySize(rooms, Size.SMALL).size()
 				|| (medium - medium_offset) > Room.getRoomsBySize(rooms, Size.MEDIUM).size()
 				|| (large - large_offset) > Room.getRoomsBySize(rooms, Size.LARGE).size());
@@ -165,7 +167,7 @@ public class Venue {
 	 */
 	public Booking addBooking(String id, LocalDateRange dateRange, int small, int medium, int large) {
 		if (!(this.canBook(dateRange, small, medium, large))) {
-			throw new InsufficientRooms();
+			throw new Error("Insufficient Rooms");
 		}
 
 		// Assume small > 0 || medium > 0 || large > 0
@@ -173,6 +175,8 @@ public class Venue {
 		ArrayList<Room> freeRooms = this.getFreeRooms(dateRange);
 
 		Booking booking = new Booking(this, id, dateRange);
+
+		// Add small rooms
 		if (small > 0) {
 			ArrayList<Room> smallRooms = Room.getRoomsBySize(freeRooms, Size.SMALL);
 			for (int i = 0; i < small; i++) {
@@ -180,6 +184,7 @@ public class Venue {
 			}
 		}
 
+		// Add medium rooms
 		if (medium > 0) {
 			ArrayList<Room> mediumRooms = Room.getRoomsBySize(freeRooms, Size.MEDIUM);
 			for (int i = 0; i < medium; i++) {
@@ -187,6 +192,7 @@ public class Venue {
 			}
 		}
 
+		// Add large rooms
 		if (large > 0) {
 			ArrayList<Room> largeRooms = Room.getRoomsBySize(freeRooms, Size.LARGE);
 			for (int i = 0; i < large; i++) {
@@ -195,19 +201,23 @@ public class Venue {
 		}
 
 		this.bookings.add(booking);
+
+		// Sort the bookings by earliest to latest booking
 		this.bookings.sort((Booking b1, Booking b2) -> b1.getStartDate().compareTo(b2.getStartDate()));
+
 		return booking;
 
 	}
 
 	/**
-	 * Find bookings that utilise a given room
+	 * Find bookings that use a given room
 	 * 
 	 * @param room
 	 * @return ArrayList<Booking>
 	 */
 	public ArrayList<Booking> getBookingsByRoom(Room room) {
 		ArrayList<Booking> result = new ArrayList<Booking>();
+
 		for (Booking booking : this.bookings) {
 			if (booking.getRooms().contains(room))
 				result.add(booking);
@@ -217,7 +227,7 @@ public class Venue {
 	}
 
 	/**
-	 * Find bookings that utilise a given room
+	 * Find bookings that use a given room
 	 * 
 	 * @param room
 	 * @return ArrayList<Booking>
@@ -245,6 +255,7 @@ public class Venue {
 	 */
 	public ArrayList<Room> getFreeRooms(LocalDateRange dateRange) {
 		ArrayList<Room> result = this.getRooms();
+
 		for (Booking booking : Booking.getBookingsByDateRange(this.bookings, dateRange)) {
 			for (Room room : booking.getRooms()) {
 				result.remove(room);
@@ -253,5 +264,29 @@ public class Venue {
 
 		return result;
 
+	}
+
+	/**
+	 * Count the number of rooms of a given size in the venue
+	 * 
+	 * @param size
+	 * @return number of rooms
+	 */
+	public int countRooms(Size size) {
+		return Room.getRoomsBySize(this.rooms, size).size();
+	}
+
+	/**
+	 * Count the number of rooms in the venue
+	 * 
+	 * @return number of rooms
+	 */
+	public int countRooms() {
+		return this.rooms.size();
+	}
+
+	@Override
+	public String toString() {
+		return this.name;
 	}
 }

@@ -45,3 +45,56 @@
   }
 ]
 {"status": "rejected"}
+{
+  "venue": "VenueTwo",
+  "rooms": [
+    "A",
+    "B"
+  ],
+  "status": "success"
+}
+[{
+  "reservations": [],
+  "room": "A"
+}]
+[
+  {
+    "reservations": [{
+      "start": "1111-11-11",
+      "end": "1111-11-11",
+      "id": "FirstVenueOne"
+    }],
+    "room": "A"
+  },
+  {
+    "reservations": [{
+      "start": "1111-11-11",
+      "end": "1111-11-11",
+      "id": "FirstVenueOne"
+    }],
+    "room": "B"
+  }
+]
+{
+  "venue": "VenueTwo",
+  "rooms": ["B"],
+  "status": "success"
+}
+[{
+  "reservations": [],
+  "room": "A"
+}]
+[
+  {
+    "reservations": [],
+    "room": "A"
+  },
+  {
+    "reservations": [{
+      "start": "1111-11-11",
+      "end": "1111-11-11",
+      "id": "FirstVenueOne"
+    }],
+    "room": "B"
+  }
+]

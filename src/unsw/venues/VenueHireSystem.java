@@ -1,6 +1,3 @@
-/**
- *
- */
 package unsw.venues;
 
 import java.time.LocalDate;
@@ -106,6 +103,8 @@ public class VenueHireSystem {
 
 	private void addRoom(String venue, String room, Size size) {
 		Venue venueObj = Venue.getVenueByName(this.venues, venue);
+
+		// Add Venue if it does not exist
 		if (venueObj == null) {
 			venueObj = new Venue(venue);
 			this.venues.add(venueObj);
@@ -115,22 +114,35 @@ public class VenueHireSystem {
 		venueObj.addRoom(room, size);
 	}
 
-	public void cancel(String id) {
+	private void cancel(String id) {
 		for (Venue venue : this.venues) {
 			// Assume `id` is valid
 			Booking booking = Booking.getBookingById(venue.getBookings(), id);
-			if (booking != null) {
-				venue.removeBooking(booking);
-				return;
-			}
+			if (booking == null)
+				continue;
+
+			venue.removeBooking(booking);
+			return;
 		}
 	}
 
-	public JSONObject request(String id, LocalDate start, LocalDate end, int small, int medium, int large) {
+	/**
+	 * Perform a booking request
+	 * 
+	 * @param id
+	 * @param start
+	 * @param end
+	 * @param small
+	 * @param medium
+	 * @param large
+	 * @return JSONObject
+	 */
+	private JSONObject request(String id, LocalDate start, LocalDate end, int small, int medium, int large) {
 
 		/*
-		 * Ignored considerations (safe system) - startDate is after endDate - duplicate
-		 * id
+		 * Ignored considerations (safe system)
+		 * 
+		 * 1) startDate is after endDate 2) duplicate id
 		 */
 
 		LocalDateRange dateRange = new LocalDateRange(start, end);
@@ -138,90 +150,74 @@ public class VenueHireSystem {
 		for (Venue venue : this.venues) {
 
 			if (venue.canBook(dateRange, small, medium, large)) {
-				return transactRequest(venue, id, dateRange, small, medium, large);
+				Booking booking = venue.addBooking(id, dateRange, small, medium, large);
+				return generateSuccess(booking);
 			}
 		}
 
-		JSONObject result = new JSONObject();
-		result.put("status", "rejected");
-		return result;
+		return generateReject();
 	}
 
-	private JSONObject transactRequest(Venue venue, String id, LocalDateRange dateRange, int small, int medium,
-			int large) {
-		JSONObject result = new JSONObject();
+	/**
+	 * Perform a change request
+	 * 
+	 * @param id
+	 * @param start
+	 * @param end
+	 * @param small
+	 * @param medium
+	 * @param large
+	 * @return JSONObject
+	 */
+	private JSONObject change(String id, LocalDate start, LocalDate end, int small, int medium, int large) {
 
-		Booking booking = venue.addBooking(id, dateRange, small, medium, large);
-
-		result.put("venue", venue.getName());
-
-		JSONArray rooms = new JSONArray();
-		for (Room room : booking.getRooms()) {
-			rooms.put(room.getName());
-		}
-		result.put("rooms", rooms);
-
-		result.put("status", "success");
-
-		return result;
-
-	}
-
-	public JSONObject change(String id, LocalDate start, LocalDate end, int small, int medium, int large) {
-		JSONObject result = new JSONObject();
+		LocalDateRange dateRange = new LocalDateRange(start, end);
 
 		for (Venue venue : this.venues) {
-			LocalDateRange dateRange = new LocalDateRange(start, end);
 
 			Booking booking = Booking.getBookingById(venue.getBookings(), id);
-			if (booking != null) {
-				boolean status = booking.requestChange(dateRange, small, medium, large);
 
-				if (status) {
-					result.put("venue", venue.getName());
+			if (booking == null)
+				continue;
 
-					JSONArray rooms = new JSONArray();
-					for (Room room : booking.getRooms()) {
-						rooms.put(room.getName());
-					}
-					result.put("rooms", rooms);
+			// Try to request a change
+			boolean status = booking.requestChange(dateRange, small, medium, large);
 
-					result.put("status", "success");
+			// If change success, then produce
+			if (status) {
+				return generateSuccess(booking);
+			} else {
+				// Change failed - not enough rooms to accommodate new rooms
 
-					return result;
-				} else {
-					// Change failed - not enough rooms to accomodate new rooms
+				/*
+				 * To remove any ambiguity, all reservation requests and changes are fulfilled
+				 * as follows: each venue is checked (in order of definition in the input) to
+				 * determine whether it can satisfy all requested rooms, and if so, the first
+				 * available rooms (again in order of definition in the input) are assigned to
+				 * the reservation.
+				 * 
+				 * This is the procedure you must follow for assigning rooms for both requests
+				 * and changes. There are no requirements that the venue must remain the same.
+				 * -- Rob Everest (https://piazza.com/class/k083hgcwt215x8?cid=91)
+				 */
+				for (Venue newVenue : this.venues) {
+					if (venue == newVenue)
+						continue;
 
-					/*
-					 * To remove any ambiguity, all reservation requests and changes are fulfilled
-					 * as follows: each venue is checked (in order of definition in the input) to
-					 * determine whether it can satisfy all requested rooms, and if so, the first
-					 * available rooms (again in order of definition in the input) are assigned to
-					 * the reservation.
-					 * 
-					 * This is the procedure you must follow for assigning rooms for both requests
-					 * and changes. There are no requirements that the venue must remain the same.
-					 * -- Rob Everest (https://piazza.com/class/k083hgcwt215x8?cid=91)
-					 */
-					for (Venue newVenue : this.venues) {
-						if (venue == newVenue)
-							continue;
-						if (newVenue.canBook(dateRange, small, medium, large)) {
-							venue.removeBooking(booking);
-							return this.transactRequest(newVenue, id, dateRange, small, medium, large);
-						}
-
+					if (newVenue.canBook(dateRange, small, medium, large)) {
+						venue.removeBooking(booking);
+						booking = newVenue.addBooking(id, dateRange, small, medium, large);
+						return generateSuccess(booking);
 					}
 
-					result.put("status", "rejected");
-					return result;
 				}
 
+				return generateReject();
 			}
+
 		}
 
-		result.put("status", "rejected");
-		return result;
+		return generateReject();
 	}
 
 	/**
@@ -230,16 +226,20 @@ public class VenueHireSystem {
 	 * @param venue
 	 * @return JSONArray
 	 */
-	public JSONArray list(String venue) {
+	private JSONArray list(String venue) {
 		JSONArray result = new JSONArray();
 
 		// Assume `venue` is valid
 		Venue venueObj = Venue.getVenueByName(this.venues, venue);
+
 		for (Room room : venueObj.getRooms()) {
+
 			JSONObject roomJSON = new JSONObject();
+
+			// Add the room name
 			roomJSON.put("room", room.getName());
 
-			// For each booking, add a reservation object into an array
+			// Add instances of the room's bookings into an array
 			JSONArray reservationsJSON = new JSONArray();
 			for (Booking booking : venueObj.getBookingsByRoom(room)) {
 				JSONObject reservationJSON = new JSONObject();
@@ -251,10 +251,43 @@ public class VenueHireSystem {
 			}
 			roomJSON.put("reservations", reservationsJSON);
 
-			// Attach room json to result
+			// Attach room to result
 			result.put(roomJSON);
 		}
 
+		return result;
+	}
+
+	/**
+	 * Create a JSON success object for a booking
+	 * 
+	 * @param booking
+	 * @return JSONObject
+	 */
+	private JSONObject generateSuccess(Booking booking) {
+		JSONObject result = new JSONObject();
+
+		result.put("venue", booking.getVenue().getName());
+
+		JSONArray rooms = new JSONArray();
+		for (Room room : booking.getRooms()) {
+			rooms.put(room.getName());
+		}
+		result.put("rooms", rooms);
+
+		result.put("status", "success");
+
+		return result;
+	}
+
+	/**
+	 * Create a JSON reject object
+	 * 
+	 * @return JSONObject
+	 */
+	private JSONObject generateReject() {
+		JSONObject result = new JSONObject();
+		result.put("status", "rejected");
 		return result;
 	}
 

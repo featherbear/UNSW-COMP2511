@@ -2,3 +2,6 @@
 *.log
 hs_err_pid*
 /bin/
+.fuse_hidden*
+
+

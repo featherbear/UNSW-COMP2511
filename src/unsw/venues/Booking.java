@@ -11,10 +11,6 @@ public class Booking {
 	private LocalDate startDate;
 	private LocalDate endDate;
 
-	private int small_count;
-	private int medium_count;
-	private int large_count;
-
 	/**
 	 * Get a booking that matches an ID from a list of bookings
 	 * 
@@ -80,10 +76,6 @@ public class Booking {
 
 		this.startDate = startDate;
 		this.endDate = endDate;
-
-		this.small_count = 0;
-		this.medium_count = 0;
-		this.large_count = 0;
 	}
 
 	/**
@@ -155,58 +147,32 @@ public class Booking {
 	 * @param room
 	 */
 	public void addRoom(Room room) {
+		// Assume `room` is unique
 		this.rooms.add(room);
-
-		switch (room.getSize()) {
-		case SMALL:
-			this.small_count++;
-			break;
-		case MEDIUM:
-			this.medium_count++;
-			break;
-		case LARGE:
-			this.large_count++;
-			break;
-		}
 	}
 
 	public void removeRoom(Room room) {
-		// TODO: Assert room in booking
-
+		// Assume `room` inside `this.rooms`
 		this.rooms.remove(room);
-
-		switch (room.getSize()) {
-		case SMALL:
-			this.small_count--;
-			break;
-		case MEDIUM:
-			this.medium_count--;
-			break;
-		case LARGE:
-			this.large_count--;
-			break;
-		}
 	}
 
 	/**
-	 * @return number of small rooms in the booking
+	 * Get number of rooms in the booking
+	 * 
+	 * @return count
 	 */
-	public int getSmallCount() {
-		return this.small_count;
+	public int getCount() {
+		return this.rooms.size();
 	}
 
 	/**
-	 * @return number of medium rooms in the booking
+	 * Get number of rooms in the booking of a given size
+	 * 
+	 * @param size
+	 * @return count
 	 */
-	public int getMediumCount() {
-		return this.medium_count;
-	}
-
-	/**
-	 * @return number of large rooms in the booking
-	 */
-	public int getLargeCount() {
-		return this.large_count;
+	public int getCount(Size size) {
+		return Room.getRoomsBySize(this.rooms, size).size();
 	}
 
 	/**
@@ -219,72 +185,65 @@ public class Booking {
 	 * @return result
 	 */
 	public boolean requestChange(LocalDateRange dateRange, int small, int medium, int large) {
-		// Remove last in room lists?
+		int small_count = Room.getRoomsBySize(this.rooms, Size.SMALL).size();
+		int medium_count = Room.getRoomsBySize(this.rooms, Size.MEDIUM).size();
+		int large_count = Room.getRoomsBySize(this.rooms, Size.LARGE).size();
 
-		if (!(this.venue._canBook(dateRange, small, medium, large, this.small_count, this.medium_count,
-				this.large_count))) {
+		// Check if the venue can accommodate the new booking details
+		if (!(this.venue._canBook(dateRange, small, medium, large, small_count, medium_count, large_count))) {
 			return false;
 		}
 
 		this.startDate = dateRange.getStart();
 		this.endDate = dateRange.getEnd();
 
-		if (small > this.small_count || medium > this.medium_count || large > this.large_count) {
-			ArrayList<Room> freeRooms = this.venue.getFreeRooms(dateRange);
+		ArrayList<Room> freeRooms = null;
 
-			if (small > this.small_count) {
-				ArrayList<Room> freeSmallRooms = Room.getRoomsBySize(freeRooms, Size.SMALL);
-				for (int i = 0; i < small - this.small_count; i++) {
-					this.addRoom(freeSmallRooms.get(i));
-				}
-				this.small_count = small;
-			}
-			if (medium > this.medium_count) {
-				ArrayList<Room> freeMediumRooms = Room.getRoomsBySize(freeRooms, Size.MEDIUM);
-				for (int i = 0; i < medium - this.medium_count; i++) {
-					this.addRoom(freeMediumRooms.get(i));
-				}
-				this.medium_count = medium;
-			}
+		// If there are extra rooms, then add extra rooms from the list of free rooms
+		// If there are fewer rooms, then remove the extra rooms starting from the end
 
-			if (large > this.large_count) {
-				ArrayList<Room> freeLargeRooms = Room.getRoomsBySize(freeRooms, Size.LARGE);
-				for (int i = 0; i < large - this.large_count; i++) {
-					this.addRoom(freeLargeRooms.get(i));
-				}
-				this.large_count = large;
-			}
+		if (small > small_count || medium > medium_count || large > large_count) {
+			freeRooms = this.venue.getFreeRooms(dateRange);
 		}
 
-		if (small < this.small_count) {
-			ArrayList<Room> smallRooms = this.getRoomsBySize(Size.SMALL);
-
-			for (int i = 0; i < this.small_count - small;) {
-				this.removeRoom(smallRooms.get(smallRooms.size() - (i + 1)));
-			}
-			this.small_count = small;
+		if (small > small_count) {
+			this.addRooms(Room.getRoomsBySize(freeRooms, Size.SMALL), small - small_count);
+		} else if (small < small_count) {
+			this.removeRooms(Size.SMALL, small_count - small);
 		}
 
-		if (medium < this.medium_count) {
-			ArrayList<Room> mediumRooms = this.getRoomsBySize(Size.SMALL);
-
-			for (int i = 0; i < this.medium_count - medium;) {
-				this.removeRoom(mediumRooms.get(mediumRooms.size() - (i + 1)));
-			}
-			this.medium_count = medium;
+		if (medium > medium_count) {
+			this.addRooms(Room.getRoomsBySize(freeRooms, Size.MEDIUM), medium - medium_count);
+		} else if (medium < medium_count) {
+			this.removeRooms(Size.MEDIUM, medium_count - medium);
 		}
 
-		if (large < this.large_count) {
-
-			ArrayList<Room> largeRooms = this.getRoomsBySize(Size.LARGE);
-
-			for (int i = 0; i < this.large_count - large;) {
-				this.removeRoom(largeRooms.get(largeRooms.size() - (i + 1)));
-			}
-			this.large_count = large;
+		if (large > large_count) {
+			this.addRooms(Room.getRoomsBySize(freeRooms, Size.LARGE), large - large_count);
+		} else if (large < large_count) {
+			this.removeRooms(Size.LARGE, medium_count - medium);
 
 		}
 
 		return true;
+	}
+
+	private void addRooms(ArrayList<Room> rooms, int count) {
+		for (int i = 0; i < count; i++) {
+			this.addRoom(rooms.get(i));
+		}
+	}
+
+	private void removeRooms(Size size, int count) {
+		ArrayList<Room> rooms = this.getRoomsBySize(size);
+
+		for (int i = 0; i < count; i++) {
+			this.removeRoom(rooms.get(rooms.size() - (i + 1)));
+		}
+	}
+
+	@Override
+	public String toString() {
+		return String.format("%s @ %s", this.id, this.venue);
 	}
 }
