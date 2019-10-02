@@ -1,0 +1,16 @@
+{ "command": "room", "venue": "VenueOne", "room": "A", "size": "small" }
+{ "command": "room", "venue": "VenueTwo", "room": "A", "size": "small" }
+{ "command": "room", "venue": "VenueTwo", "room": "B", "size": "medium" }
+{ "command": "request", "id": "FirstVenueOne", "start": "1111-11-11", "end": "1111-11-11" , "small": 1, "medium": 0, "large": 0 }
+{ "command": "list", "venue": "VenueOne" }
+{ "command": "list", "venue": "VenueTwo" }
+{ "command": "change", "id": "FirstVenueOne", "start": "1111-11-11", "end": "1111-11-11" , "small": 1, "medium": 0, "large": 0 }
+{ "command": "list", "venue": "VenueOne" }
+{ "command": "list", "venue": "VenueTwo" }
+{ "command": "change", "id": "FirstVenueOne", "start": "1111-11-11", "end": "1111-11-11" , "small": 0, "medium": 0, "large": 1 }
+{ "command": "change", "id": "FirstVenueOne", "start": "1111-11-11", "end": "1111-11-11" , "small": 1, "medium": 1, "large": 0 }
+{ "command": "list", "venue": "VenueOne" }
+{ "command": "list", "venue": "VenueTwo" }
+{ "command": "change", "id": "FirstVenueOne", "start": "1111-11-11", "end": "1111-11-11" , "small": 0, "medium": 1, "large": 0 }
+{ "command": "list", "venue": "VenueOne" }
+{ "command": "list", "venue": "VenueTwo" }

@@ -1,0 +1,13 @@
+{ "command": "room", "venue": "EventCancel", "room": "A", "size": "small" }
+{ "command": "room", "venue": "EventCancel", "room": "B", "size": "medium" }
+{ "command": "room", "venue": "EventCancel", "room": "C", "size": "large" }
+{ "command": "request", "id": "1", "start": "1111-11-11", "end": "1111-11-11" , "small": 1, "medium": 1, "large": 0 }
+{ "command": "list", "venue": "EventCancel" }
+{ "command": "cancel", "id": "1"}
+{ "command": "list", "venue": "EventCancel" }
+{ "command": "request", "id": "2", "start": "1111-11-11", "end": "1111-11-11" , "small": 1, "medium": 1, "large": 0 }
+{ "command": "request", "id": "3", "start": "1111-11-11", "end": "1111-11-11" , "small": 0, "medium": 1, "large": 1 }
+{ "command": "cancel", "id": "2"}
+{ "command": "request", "id": "3", "start": "1111-11-11", "end": "1111-11-11" , "small": 0, "medium": 1, "large": 1 }
+{ "command": "list", "venue": "EventCancel" }
+
