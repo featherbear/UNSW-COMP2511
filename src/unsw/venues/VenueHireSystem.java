@@ -114,7 +114,7 @@ public class VenueHireSystem {
 		venueObj.addRoom(room, size);
 	}
 
-	public void cancel(String id) {
+	private void cancel(String id) {
 		for (Venue venue : this.venues) {
 			// Assume `id` is valid
 			Booking booking = Booking.getBookingById(venue.getBookings(), id);
@@ -137,7 +137,7 @@ public class VenueHireSystem {
 	 * @param large
 	 * @return JSONObject
 	 */
-	public JSONObject request(String id, LocalDate start, LocalDate end, int small, int medium, int large) {
+	private JSONObject request(String id, LocalDate start, LocalDate end, int small, int medium, int large) {
 
 		/*
 		 * Ignored considerations (safe system)
@@ -169,7 +169,7 @@ public class VenueHireSystem {
 	 * @param large
 	 * @return JSONObject
 	 */
-	public JSONObject change(String id, LocalDate start, LocalDate end, int small, int medium, int large) {
+	private JSONObject change(String id, LocalDate start, LocalDate end, int small, int medium, int large) {
 
 		LocalDateRange dateRange = new LocalDateRange(start, end);
 
@@ -226,7 +226,7 @@ public class VenueHireSystem {
 	 * @param venue
 	 * @return JSONArray
 	 */
-	public JSONArray list(String venue) {
+	private JSONArray list(String venue) {
 		JSONArray result = new JSONArray();
 
 		// Assume `venue` is valid
