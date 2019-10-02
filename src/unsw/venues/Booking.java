@@ -221,7 +221,7 @@ public class Booking {
 		if (large > large_count) {
 			this.addRooms(Room.getRoomsBySize(freeRooms, Size.LARGE), large - large_count);
 		} else if (large < large_count) {
-			this.removeRooms(Size.LARGE, medium_count - medium);
+			this.removeRooms(Size.LARGE, large_count - large);
 
 		}
 
