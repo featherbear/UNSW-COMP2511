@@ -102,6 +102,19 @@ public class Venue {
 	/**
 	 * Check if the Venue has enough rooms for a booking
 	 * 
+	 * @param date   range
+	 * @param number of small rooms
+	 * @param number of medium rooms
+	 * @param number of large rooms
+	 * @return boolean
+	 */
+	public boolean canBook(LocalDateRange dateRange, int small, int medium, int large) {
+		return this.canBook(dateRange, small, medium, large, 0, 0, 0);
+	}
+
+	/**
+	 * Check if the Venue has enough rooms for a booking, with supplied room offset
+	 * 
 	 * @param date          range
 	 * @param number        of small rooms
 	 * @param number        of medium rooms
@@ -111,7 +124,7 @@ public class Venue {
 	 * @param offset_large  - number of large rooms
 	 * @return boolean
 	 */
-	public boolean _canBook(LocalDateRange dateRange, int small, int medium, int large, int small_offset,
+	public boolean canBook(LocalDateRange dateRange, int small, int medium, int large, int small_offset,
 			int medium_offset, int large_offset) {
 
 		// Use the `getRooms` method over `this.rooms` as it creates a copy
@@ -129,19 +142,6 @@ public class Venue {
 		return !((small - small_offset) > Room.getRoomsBySize(rooms, Size.SMALL).size()
 				|| (medium - medium_offset) > Room.getRoomsBySize(rooms, Size.MEDIUM).size()
 				|| (large - large_offset) > Room.getRoomsBySize(rooms, Size.LARGE).size());
-	}
-
-	/**
-	 * Check if the Venue has enough rooms for a booking
-	 * 
-	 * @param date   range
-	 * @param number of small rooms
-	 * @param number of medium rooms
-	 * @param number of large rooms
-	 * @return boolean
-	 */
-	public boolean canBook(LocalDateRange dateRange, int small, int medium, int large) {
-		return this._canBook(dateRange, small, medium, large, 0, 0, 0);
 	}
 
 	/**

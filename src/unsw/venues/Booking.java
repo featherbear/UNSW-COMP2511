@@ -190,7 +190,7 @@ public class Booking {
 		int large_count = Room.getRoomsBySize(this.rooms, Size.LARGE).size();
 
 		// Check if the venue can accommodate the new booking details
-		if (!(this.venue._canBook(dateRange, small, medium, large, small_count, medium_count, large_count))) {
+		if (!(this.venue.canBook(dateRange, small, medium, large, small_count, medium_count, large_count))) {
 			return false;
 		}
 
