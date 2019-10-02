@@ -17,6 +17,7 @@ public class DateUtils {
 	public static boolean dateRangeInDateRange(LocalDate dateStart, LocalDate dateEnd, LocalDate rangeStart,
 			LocalDate rangeEnd) {
 
+		// Either `rangeStart` or `rangeEnd` must be present
 		if (rangeStart == null && rangeEnd == null)
 			return false;
 

@@ -155,8 +155,10 @@ public class Booking {
 	 * @param room
 	 */
 	public void addRoom(Room room) {
+		// Assume `room` is unique
 		this.rooms.add(room);
 
+		// Increase the room count
 		switch (room.getSize()) {
 		case SMALL:
 			this.small_count++;
@@ -171,10 +173,11 @@ public class Booking {
 	}
 
 	public void removeRoom(Room room) {
-		// TODO: Assert room in booking
+		// Assume `room` inside `this.rooms`
 
 		this.rooms.remove(room);
 
+		// Update the room count
 		switch (room.getSize()) {
 		case SMALL:
 			this.small_count--;
@@ -189,24 +192,33 @@ public class Booking {
 	}
 
 	/**
-	 * @return number of small rooms in the booking
+	 * Get number of rooms in the booking
+	 * 
+	 * @return count
 	 */
-	public int getSmallCount() {
-		return this.small_count;
+	public int getCount() {
+		return this.rooms.size();
 	}
 
 	/**
-	 * @return number of medium rooms in the booking
+	 * Get number of rooms in the booking of a given size
+	 * 
+	 * @param size
+	 * @return count
 	 */
-	public int getMediumCount() {
-		return this.medium_count;
-	}
+	public int getCount(Size size) {
+		switch (size) {
+		case SMALL:
+			return this.small_count;
+		case MEDIUM:
+			return this.medium_count;
+		case LARGE:
+			return this.large_count;
+		default:
+			// Assume safe input
+			return 0;
+		}
 
-	/**
-	 * @return number of large rooms in the booking
-	 */
-	public int getLargeCount() {
-		return this.large_count;
 	}
 
 	/**
@@ -219,8 +231,7 @@ public class Booking {
 	 * @return result
 	 */
 	public boolean requestChange(LocalDateRange dateRange, int small, int medium, int large) {
-		// Remove last in room lists?
-
+		// Check if the venue can accommodate the new booking details
 		if (!(this.venue._canBook(dateRange, small, medium, large, this.small_count, this.medium_count,
 				this.large_count))) {
 			return false;
@@ -229,6 +240,7 @@ public class Booking {
 		this.startDate = dateRange.getStart();
 		this.endDate = dateRange.getEnd();
 
+		// If there are extra rooms, then add extra rooms from the list of free rooms
 		if (small > this.small_count || medium > this.medium_count || large > this.large_count) {
 			ArrayList<Room> freeRooms = this.venue.getFreeRooms(dateRange);
 
@@ -256,6 +268,8 @@ public class Booking {
 			}
 		}
 
+		// If there are fewer rooms, then remove the extra rooms (from the end) from the
+		// list
 		if (small < this.small_count) {
 			ArrayList<Room> smallRooms = this.getRoomsBySize(Size.SMALL);
 
