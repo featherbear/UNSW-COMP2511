@@ -33,7 +33,7 @@ test input2.commented.json output2.json
 test input3.commented.json output3.json
 test input4.commented.json output4.json
 test input5.commented.json output5.json
-
+test input6.commented.json output6.json
 echo
 tests/decommentify.sh
 echo
@@ -43,6 +43,7 @@ test input2.json output2.json
 test input3.json output3.json
 test input4.json output4.json
 test input5.json output5.json
+test input6.json output6.json
 
 echo "\nAll tests completed!"
 

@@ -320,3 +320,103 @@
   ],
   "status": "success"
 }
+[
+  {
+    "reservations": [{
+      "start": "2019-09-30",
+      "end": "2019-10-04",
+      "id": "COMP2533"
+    }],
+    "room": "clavier"
+  },
+  {
+    "reservations": [{
+      "start": "2019-09-30",
+      "end": "2019-10-04",
+      "id": "COMP2533"
+    }],
+    "room": "organ"
+  },
+  {
+    "reservations": [{
+      "start": "2019-09-30",
+      "end": "2019-10-04",
+      "id": "COMP2533"
+    }],
+    "room": "piano"
+  },
+  {
+    "reservations": [{
+      "start": "2019-09-30",
+      "end": "2019-10-04",
+      "id": "COMP2533"
+    }],
+    "room": "tabla"
+  },
+  {
+    "reservations": [{
+      "start": "2019-09-30",
+      "end": "2019-10-04",
+      "id": "COMP2533"
+    }],
+    "room": "bongo"
+  },
+  {
+    "reservations": [{
+      "start": "2019-09-30",
+      "end": "2019-10-04",
+      "id": "COMP2533"
+    }],
+    "room": "drum"
+  },
+  {
+    "reservations": [{
+      "start": "2019-09-30",
+      "end": "2019-10-04",
+      "id": "COMP2533"
+    }],
+    "room": "oud"
+  },
+  {
+    "reservations": [{
+      "start": "2019-09-30",
+      "end": "2019-10-04",
+      "id": "COMP2533"
+    }],
+    "room": "lyre"
+  }
+]
+[
+  {
+    "reservations": [],
+    "room": "kora"
+  },
+  {
+    "reservations": [],
+    "room": "sitar"
+  },
+  {
+    "reservations": [],
+    "room": "horn"
+  },
+  {
+    "reservations": [],
+    "room": "bugle"
+  },
+  {
+    "reservations": [],
+    "room": "oboe"
+  },
+  {
+    "reservations": [],
+    "room": "flute"
+  },
+  {
+    "reservations": [],
+    "room": "cello"
+  },
+  {
+    "reservations": [],
+    "room": "viola"
+  }
+]
