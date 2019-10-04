@@ -10,6 +10,7 @@ public class Enrolment {
 		this.offering = offering;
 		this.student = student;
 		this.grade = new Grade();
+		offering.addEnrolment(this);
 	}
 
 	public Course getCourse() {

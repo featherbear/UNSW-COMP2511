@@ -22,6 +22,10 @@ public class CourseOffering {
 		sessions.add(session);
 	}
 
+	public void addEnrolment(Enrolment e) {
+		this.enrolments.add(e);
+	}
+
 	public Course getCourse() {
 		return course;
 	}
