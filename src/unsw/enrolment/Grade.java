@@ -58,4 +58,9 @@ public class Grade {
 	public int getMark() {
 		return this.mark;
 	}
+
+	@Override
+	public String toString() {
+		return String.format("%d (%s)", this.mark, this.getGrade());
+	}
 }

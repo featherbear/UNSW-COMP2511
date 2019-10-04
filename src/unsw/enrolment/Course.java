@@ -17,10 +17,16 @@ public class Course {
 	private List<Course> prereqs;
 	private List<CourseOffering> courseOfferings;
 
-	public Course(String courseCode, String title) {
+	public Course(String courseCode, String title, int uoc) {
 		this.courseCode = courseCode;
 		this.prereqs = new ArrayList<Course>();
 		this.courseOfferings = new ArrayList<CourseOffering>();
+		this.title = title;
+		this.uoc = 6;
+	}
+
+	public Course(String courseCode, String title) {
+		this(courseCode, title, 6);
 	}
 
 	public void addPrereq(Course course) {
@@ -49,6 +55,10 @@ public class Course {
 		return result;
 	}
 
+	public String getTitle() {
+		return this.title;
+	}
+
 	public String getCourseCode() {
 		return courseCode;
 	}
@@ -59,6 +69,11 @@ public class Course {
 
 	public int getUOC() {
 		return uoc;
+	}
+
+	@Override
+	public String toString() {
+		return String.format("(%s) %s - %d UOC", this.courseCode, this.title, this.uoc);
 	}
 
 }

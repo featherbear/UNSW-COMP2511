@@ -56,4 +56,9 @@ public class Student {
 		return enrolment;
 	}
 
+	@Override
+	public String toString() {
+		return String.format("Student - %s", this.zid);
+	}
+
 }

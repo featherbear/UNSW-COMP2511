@@ -32,4 +32,8 @@ public class Enrolment {
 		this.grade.setMark(mark);
 	}
 
+	@Override
+	public String toString() {
+		return String.format("%s - %s - %s", this.student.getZID(), this.getCourse().getCourseCode(), this.grade);
+	}
 }
