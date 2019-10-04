@@ -1,42 +1,64 @@
 package unsw.enrolment;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * A course in the enrolment system.
+ * 
  * @author Robert Clifton-Everest
  *
  */
 public class Course {
 
-    private String courseCode;
-    private String title;
-    private int uoc;
-    private List<Course> prereqs;
-    private List<CourseOffering> courseOfferings;
+	private String courseCode;
+	private String title;
+	private int uoc;
+	private List<Course> prereqs;
+	private List<CourseOffering> courseOfferings;
 
+	public Course(String courseCode, String title) {
+		this.courseCode = courseCode;
+		this.prereqs = new ArrayList<Course>();
+		this.courseOfferings = new ArrayList<CourseOffering>();
+	}
 
-    public Course(String courseCode, String title) {
-        this.courseCode = courseCode;
-        this.prereqs = new ArrayList<Course>();
-        this.courseOfferings = new ArrayList<CourseOffering>();
-    }
+	public void addPrereq(Course course) {
+		prereqs.add(course);
+	}
 
+	public ArrayList<Course> getPrereq() {
+		ArrayList<Course> result = new ArrayList<Course>();
+		for (Course c : this.prereqs) {
+			result.add(c);
+		}
 
-    public void addPrereq(Course course) {
-        prereqs.add(course);
-    }
+		return result;
+	}
 
-    public void addOffering(CourseOffering offering) {
-        courseOfferings.add(offering);
-    }
+	public void addOffering(CourseOffering offering) {
+		courseOfferings.add(offering);
+	}
 
-    public String getCourseCode() {
-        return courseCode;
-    }
+	public ArrayList<CourseOffering> getOfferings() {
+		ArrayList<CourseOffering> result = new ArrayList<CourseOffering>();
+		for (CourseOffering c : this.courseOfferings) {
+			result.add(c);
+		}
 
-    public int getUOC() {
-        return uoc;
-    }
+		return result;
+	}
+
+	public String getCourseCode() {
+		return courseCode;
+	}
+
+	public void setUOC(int uoc) {
+		this.uoc = uoc;
+	}
+
+	public int getUOC() {
+		return uoc;
+	}
 
 }
