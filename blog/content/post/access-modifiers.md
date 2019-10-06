@@ -1,8 +1,7 @@
 ---
-title: "Java Access Modifiers"
+title: "Access Modifiers"
 date: 2019-09-19T11:29:29+10:00
 
-categories: ["Java"]
 hiddenFromHomePage: false
 postMetaInFooter: false
 

@@ -1,8 +1,7 @@
 ---
-title: "Classes in Java"
+title: "Classes"
 date: 2019-09-19T11:28:25+10:00
 
-categories: ["Java"]
 hiddenFromHomePage: false
 postMetaInFooter: false
 
@@ -13,6 +12,16 @@ flowchartDiagrams:
 sequenceDiagrams:
   enable: false
   options: ""
+---
+
+In Object-Oriented Programming, programmers focus on user-defined data types called **classes**.
+
+Each class contains **attributes** and **methods** that can manipulate data.
+
+An instance of a class is called an **object**.
+
+**Encapsulation** is the privatisation of its attributes and methods, where its properties are exposed to other objects only if explicitly set.
+
 ---
 
 - The filename containing the class must match the name of the class.
@@ -30,7 +39,7 @@ When a class is created, it is often useful to assign values to its attributes s
 
 Constructor methods are named as `public` type-less methods that have the same name as its class.
 
-Consider a class definition for a circle
+Consider a class definition for a circle...
 
 ## The no-arg constructor
 
@@ -108,3 +117,23 @@ class Circle {
   }
 }
 ```
+
+## All methods can be overloaded
+
+You can have two functions with the same name, that accept a different set of parameters.  
+This allows your code to become more flexible, as you can pass different values, or perhaps even leave some out, so you can set it later!
+
+## Inside a class
+
+- Variable declarations outside of the `constructor` are **global**
+- Variable declarations inside a `constructor` are **specific to that instance**
+
+## Variable Shadowing
+
+In programming, variable shadowing is the 'code smell' of using a variable name that has the same name as an attribute in its parent class.
+
+Due to the [dynamic binding](../dynamic-binding) nature of Java, the variable declared in the parent class would then be inaccessible! Oh noes!
+
+## Inheritance
+
+[See here](../inheritance)

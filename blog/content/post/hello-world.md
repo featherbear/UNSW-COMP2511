@@ -2,7 +2,6 @@
 title: "Hello, World!"
 date: 2019-09-17T15:19:07+10:00
 
-categories: ["Java"]
 hiddenFromHomePage: false
 postMetaInFooter: false
 
@@ -15,5 +14,5 @@ sequenceDiagrams:
   options: ""
 ---
 
-{{% code file="static/post/java-hello-world/HelloWorld.java" language="java" %}}
+{{% code file="static/post/hello-world/HelloWorld.java" language="java" %}}
 Source: [HelloWorld.java](HelloWorld.java)

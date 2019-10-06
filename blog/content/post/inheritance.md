@@ -1,9 +1,8 @@
 ---
-title: "Lecture 02"
-date: 2019-09-18T16:00:00+10:00
+title: "Inheritance"
+date: 2019-10-06T20:18:37+11:00
 
-description: "Inheritance"
-categories: ["Lectures", "Java"]
+description: ""
 hiddenFromHomePage: false
 postMetaInFooter: false
 
@@ -14,16 +13,6 @@ flowchartDiagrams:
 sequenceDiagrams:
   enable: false
   options: ""
----
-
-In Object-Oriented Programming, programmers focus on user-defined data types called **classes**.
-
-Each class contains **attributes** and **methods** that can manipulate data.
-
-An instance of a class is called an **object**.
-
-**Encapsulation** is the privatisation of its attributes and methods, where its properties are exposed to other objects only if explicitly set.
-
 ---
 
 # Inheritance in OOP
@@ -53,18 +42,26 @@ Dog d = new Dog();
 d.whatSound();
 ```
 
+## Method Overriding
+
+- Argument list should be the same as that of the overridden method
+- The return type must be the same, or a subtype
+- [Access level](../access-modifiers) cannot be more restrictive than the overridden method's access level
+- Static methods cannot be overridden
+
 ## Good Practices for Inheritance
 
 - Only use inheritance if all of the inherited attributes and methods make sense!
+- [Liskov Substitution Principle](../solid#liskov-substitution-principle)
+- Favour composition over inheritance
 
 ## Inheritance Relationships
 
-### Is-A
+[Click here](../relationships#inheritance-relationships)
 
-An "is a" relationship functions by extending a class to produce another
+## Types
 
-### Has-A
+Consider a class `B` that extends class `A` - we are able to represent an instance of `B` as its parent type.  
+i.e. `A newObj = new B()`.
 
-A "has a" relationship functions by containing an object of a class within another class.
-
-For example, writing a wrapper class.
+This can be possibly bad, as whilst `newObj` is of type `A`, the object contains methods for type `B`
