@@ -202,9 +202,7 @@ public class Booking {
 		this.startDate = dateRange.getStart();
 		this.endDate = dateRange.getEnd();
 
-		for (Room room : this.getRooms()) {
-			this.removeRoom(room);
-		}
+		this.rooms.clear();
 
 		ArrayList<Room> freeRooms = this.venue.getFreeRooms(dateRange);
 
