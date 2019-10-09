@@ -71,7 +71,6 @@ public class Venue {
 	 * @return Venue rooms
 	 */
 	public ArrayList<Room> getRooms() {
-		// Jenn thinks that we shouldn't put the cloning of the list here.
 		ArrayList<Room> results = new ArrayList<Room>(this.countRooms());
 		for (Room room : this.rooms)
 			results.add(room);

@@ -14,7 +14,7 @@ test() {
   if [ $? -ne 0 ]
   then
     echo ${RED}'  "'$1'" did not match "'$2'"'${NC}
-    # echo "$RESULT" | head -n 10
+    echo "$RESULT" | head -n 10
   else
     echo ${GREEN}'  Success'${NC}
   fi
@@ -34,6 +34,7 @@ test input3.commented.json output3.json
 test input4.commented.json output4.json
 test input5.commented.json output5.json
 test input6.commented.json output6.json
+
 echo
 tests/decommentify.sh
 echo

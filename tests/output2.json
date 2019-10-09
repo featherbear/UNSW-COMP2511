@@ -21,6 +21,28 @@
     "room": "B"
   }
 ]
+[
+  {
+    "reservations": [],
+    "room": "1"
+  },
+  {
+    "reservations": [],
+    "room": "2"
+  },
+  {
+    "reservations": [],
+    "room": "3"
+  },
+  {
+    "reservations": [],
+    "room": "4"
+  },
+  {
+    "reservations": [],
+    "room": "5"
+  }
+]
 {
   "venue": "VenueOne",
   "rooms": ["A"],
@@ -44,7 +66,33 @@
     "room": "B"
   }
 ]
-{"status": "rejected"}
+[
+  {
+    "reservations": [],
+    "room": "1"
+  },
+  {
+    "reservations": [],
+    "room": "2"
+  },
+  {
+    "reservations": [],
+    "room": "3"
+  },
+  {
+    "reservations": [],
+    "room": "4"
+  },
+  {
+    "reservations": [],
+    "room": "5"
+  }
+]
+{
+  "venue": "VenueThree",
+  "rooms": ["1"],
+  "status": "success"
+}
 {
   "venue": "VenueTwo",
   "rooms": [
@@ -75,6 +123,28 @@
     "room": "B"
   }
 ]
+[
+  {
+    "reservations": [],
+    "room": "1"
+  },
+  {
+    "reservations": [],
+    "room": "2"
+  },
+  {
+    "reservations": [],
+    "room": "3"
+  },
+  {
+    "reservations": [],
+    "room": "4"
+  },
+  {
+    "reservations": [],
+    "room": "5"
+  }
+]
 {
   "venue": "VenueTwo",
   "rooms": ["B"],
@@ -96,5 +166,238 @@
       "id": "FirstVenueOne"
     }],
     "room": "B"
+  }
+]
+[
+  {
+    "reservations": [],
+    "room": "1"
+  },
+  {
+    "reservations": [],
+    "room": "2"
+  },
+  {
+    "reservations": [],
+    "room": "3"
+  },
+  {
+    "reservations": [],
+    "room": "4"
+  },
+  {
+    "reservations": [],
+    "room": "5"
+  }
+]
+{
+  "venue": "VenueThree",
+  "rooms": [
+    "1",
+    "2"
+  ],
+  "status": "success"
+}
+[{
+  "reservations": [],
+  "room": "A"
+}]
+[
+  {
+    "reservations": [],
+    "room": "A"
+  },
+  {
+    "reservations": [{
+      "start": "1111-11-11",
+      "end": "1111-11-11",
+      "id": "FirstVenueOne"
+    }],
+    "room": "B"
+  }
+]
+[
+  {
+    "reservations": [{
+      "start": "1111-11-11",
+      "end": "1111-11-11",
+      "id": "FirstVenueThree"
+    }],
+    "room": "1"
+  },
+  {
+    "reservations": [{
+      "start": "1111-11-11",
+      "end": "1111-11-11",
+      "id": "FirstVenueThree"
+    }],
+    "room": "2"
+  },
+  {
+    "reservations": [],
+    "room": "3"
+  },
+  {
+    "reservations": [],
+    "room": "4"
+  },
+  {
+    "reservations": [],
+    "room": "5"
+  }
+]
+{
+  "venue": "VenueThree",
+  "rooms": [
+    "3",
+    "4"
+  ],
+  "status": "success"
+}
+[{
+  "reservations": [],
+  "room": "A"
+}]
+[
+  {
+    "reservations": [],
+    "room": "A"
+  },
+  {
+    "reservations": [{
+      "start": "1111-11-11",
+      "end": "1111-11-11",
+      "id": "FirstVenueOne"
+    }],
+    "room": "B"
+  }
+]
+[
+  {
+    "reservations": [{
+      "start": "1111-11-11",
+      "end": "1111-11-11",
+      "id": "FirstVenueThree"
+    }],
+    "room": "1"
+  },
+  {
+    "reservations": [{
+      "start": "1111-11-11",
+      "end": "1111-11-11",
+      "id": "FirstVenueThree"
+    }],
+    "room": "2"
+  },
+  {
+    "reservations": [{
+      "start": "1111-11-11",
+      "end": "1111-11-11",
+      "id": "SecondVenueThree"
+    }],
+    "room": "3"
+  },
+  {
+    "reservations": [{
+      "start": "1111-11-11",
+      "end": "1111-11-11",
+      "id": "SecondVenueThree"
+    }],
+    "room": "4"
+  },
+  {
+    "reservations": [],
+    "room": "5"
+  }
+]
+[
+  {
+    "reservations": [],
+    "room": "1"
+  },
+  {
+    "reservations": [],
+    "room": "2"
+  },
+  {
+    "reservations": [{
+      "start": "1111-11-11",
+      "end": "1111-11-11",
+      "id": "SecondVenueThree"
+    }],
+    "room": "3"
+  },
+  {
+    "reservations": [{
+      "start": "1111-11-11",
+      "end": "1111-11-11",
+      "id": "SecondVenueThree"
+    }],
+    "room": "4"
+  },
+  {
+    "reservations": [],
+    "room": "5"
+  }
+]
+{
+  "venue": "VenueThree",
+  "rooms": [
+    "1",
+    "2",
+    "3"
+  ],
+  "status": "success"
+}
+[{
+  "reservations": [],
+  "room": "A"
+}]
+[
+  {
+    "reservations": [],
+    "room": "A"
+  },
+  {
+    "reservations": [{
+      "start": "1111-11-11",
+      "end": "1111-11-11",
+      "id": "FirstVenueOne"
+    }],
+    "room": "B"
+  }
+]
+[
+  {
+    "reservations": [{
+      "start": "1111-11-11",
+      "end": "1111-11-11",
+      "id": "SecondVenueThree"
+    }],
+    "room": "1"
+  },
+  {
+    "reservations": [{
+      "start": "1111-11-11",
+      "end": "1111-11-11",
+      "id": "SecondVenueThree"
+    }],
+    "room": "2"
+  },
+  {
+    "reservations": [{
+      "start": "1111-11-11",
+      "end": "1111-11-11",
+      "id": "SecondVenueThree"
+    }],
+    "room": "3"
+  },
+  {
+    "reservations": [],
+    "room": "4"
+  },
+  {
+    "reservations": [],
+    "room": "5"
   }
 ]
