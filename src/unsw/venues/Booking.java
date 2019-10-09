@@ -107,7 +107,12 @@ public class Booking {
 	 * @return Booked rooms
 	 */
 	public ArrayList<Room> getRooms() {
-		return this.rooms;
+		ArrayList<Room> results = new ArrayList<Room>(this.rooms.size());
+
+		for (Room room : this.rooms)
+			results.add(room);
+
+		return results;
 	}
 
 	/**
@@ -197,32 +202,20 @@ public class Booking {
 		this.startDate = dateRange.getStart();
 		this.endDate = dateRange.getEnd();
 
-		ArrayList<Room> freeRooms = null;
-
-		// If there are extra rooms, then add extra rooms from the list of free rooms
-		// If there are fewer rooms, then remove the extra rooms starting from the end
-
-		if (small > small_count || medium > medium_count || large > large_count) {
-			freeRooms = this.venue.getFreeRooms(dateRange);
+		for (Room room : this.getRooms()) {
+			this.removeRoom(room);
 		}
 
-		if (small > small_count) {
-			this.addRooms(Room.getRoomsBySize(freeRooms, Size.SMALL), small - small_count);
-		} else if (small < small_count) {
-			this.removeRooms(Size.SMALL, small_count - small);
+		ArrayList<Room> freeRooms = this.venue.getFreeRooms(dateRange);
+
+		if (small > 0) {
+			this.addRooms(Room.getRoomsBySize(freeRooms, Size.SMALL), small);
 		}
-
-		if (medium > medium_count) {
-			this.addRooms(Room.getRoomsBySize(freeRooms, Size.MEDIUM), medium - medium_count);
-		} else if (medium < medium_count) {
-			this.removeRooms(Size.MEDIUM, medium_count - medium);
+		if (medium > 0) {
+			this.addRooms(Room.getRoomsBySize(freeRooms, Size.MEDIUM), medium);
 		}
-
-		if (large > large_count) {
-			this.addRooms(Room.getRoomsBySize(freeRooms, Size.LARGE), large - large_count);
-		} else if (large < large_count) {
-			this.removeRooms(Size.LARGE, large_count - large);
-
+		if (large > 0) {
+			this.addRooms(Room.getRoomsBySize(freeRooms, Size.LARGE), large);
 		}
 
 		return true;
@@ -231,14 +224,6 @@ public class Booking {
 	private void addRooms(ArrayList<Room> rooms, int count) {
 		for (int i = 0; i < count; i++) {
 			this.addRoom(rooms.get(i));
-		}
-	}
-
-	private void removeRooms(Size size, int count) {
-		ArrayList<Room> rooms = this.getRoomsBySize(size);
-
-		for (int i = 0; i < count; i++) {
-			this.removeRoom(rooms.get(rooms.size() - (i + 1)));
 		}
 	}
 
