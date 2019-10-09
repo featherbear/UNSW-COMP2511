@@ -161,4 +161,6 @@ In order to update the next state, we will have to pass in a way for the state t
 
 Best Method: Pass the context into the state class through the constructor. It is also a good idea to create the states during the initialisation of the context
 
+---
+
 ![](https://refactoring.guru/images/patterns/diagrams/state/structure-2x.png)

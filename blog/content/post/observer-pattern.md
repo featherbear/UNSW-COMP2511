@@ -69,3 +69,7 @@ Each subscriber adds a callback to the publisher's list. When the publisher obje
   * `Observable` is a class, not an interface?
   * `Observable` protects its `setChanged`?
 * Dumb.
+
+---
+
+![](https://refactoring.guru/images/patterns/diagrams/observer/structure-2x.png)
