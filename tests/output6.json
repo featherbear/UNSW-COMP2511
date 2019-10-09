@@ -195,14 +195,14 @@
 {
   "venue": "K17",
   "rooms": [
+    "piano",
     "clavier",
     "organ",
     "oud",
+    "lyre",
     "tabla",
     "bongo",
-    "drum",
-    "piano",
-    "lyre"
+    "drum"
   ],
   "status": "success"
 }
@@ -309,14 +309,14 @@
 {
   "venue": "K17",
   "rooms": [
+    "piano",
     "clavier",
     "organ",
     "oud",
+    "lyre",
     "tabla",
     "bongo",
-    "drum",
-    "piano",
-    "lyre"
+    "drum"
   ],
   "status": "success"
 }

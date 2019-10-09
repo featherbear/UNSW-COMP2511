@@ -3,21 +3,48 @@
 { "command": "room", "venue": "VenueOne", "room": "A", "size": "small" }
 { "command": "room", "venue": "VenueTwo", "room": "A", "size": "small" }
 { "command": "room", "venue": "VenueTwo", "room": "B", "size": "medium" }
+{ "command": "room", "venue": "VenueThree", "room": "1", "size": "large" }
+{ "command": "room", "venue": "VenueThree", "room": "2", "size": "large" }
+{ "command": "room", "venue": "VenueThree", "room": "3", "size": "large" }
+{ "command": "room", "venue": "VenueThree", "room": "4", "size": "large" }
+{ "command": "room", "venue": "VenueThree", "room": "5", "size": "large" }
 ## Try booking one small room, should succeed with VenueOne:A
 { "command": "request", "id": "FirstVenueOne", "start": "1111-11-11", "end": "1111-11-11" , "small": 1, "medium": 0, "large": 0 }
 { "command": "list", "venue": "VenueOne" }
 { "command": "list", "venue": "VenueTwo" }
+{ "command": "list", "venue": "VenueThree" }
 ## Request a change to one small room - should not change
 { "command": "change", "id": "FirstVenueOne", "start": "1111-11-11", "end": "1111-11-11" , "small": 1, "medium": 0, "large": 0 }
 { "command": "list", "venue": "VenueOne" }
 { "command": "list", "venue": "VenueTwo" }
+{ "command": "list", "venue": "VenueThree" }
 ## Request a change to one large room - should error
 { "command": "change", "id": "FirstVenueOne", "start": "1111-11-11", "end": "1111-11-11" , "small": 0, "medium": 0, "large": 1 }
 ## Request a change to one small and one medium room - should succeed with VenueTwo:A,B
 { "command": "change", "id": "FirstVenueOne", "start": "1111-11-11", "end": "1111-11-11" , "small": 1, "medium": 1, "large": 0 }
 { "command": "list", "venue": "VenueOne" }
 { "command": "list", "venue": "VenueTwo" }
+{ "command": "list", "venue": "VenueThree" }
 ## Request a change to one medium room - should succeed with VenueTwo:B 
 { "command": "change", "id": "FirstVenueOne", "start": "1111-11-11", "end": "1111-11-11" , "small": 0, "medium": 1, "large": 0 }
 { "command": "list", "venue": "VenueOne" }
 { "command": "list", "venue": "VenueTwo" }
+{ "command": "list", "venue": "VenueThree" }
+## Try book two large venues - should succeed with VenueThree:1,2
+{ "command": "request", "id": "FirstVenueThree", "start": "1111-11-11", "end": "1111-11-11" , "small": 0, "medium": 0, "large": 2 }
+{ "command": "list", "venue": "VenueOne" }
+{ "command": "list", "venue": "VenueTwo" }
+{ "command": "list", "venue": "VenueThree" }
+## Try book another two large venues - should succeed with VenueThree:3,4
+{ "command": "request", "id": "SecondVenueThree", "start": "1111-11-11", "end": "1111-11-11" , "small": 0, "medium": 0, "large": 2 }
+{ "command": "list", "venue": "VenueOne" }
+{ "command": "list", "venue": "VenueTwo" }
+{ "command": "list", "venue": "VenueThree" }
+## Cancel "FirstVenueThree", should open up VenueThree:1,2
+{ "command": "cancel", "id": "FirstVenueThree"}
+{ "command": "list", "venue": "VenueThree" }
+## Request a change to SecondVenueThree to three large room - should succeed with VenueThree:1,2,3
+{ "command": "change", "id": "SecondVenueThree", "start": "1111-11-11", "end": "1111-11-11" , "small": 0, "medium": 0, "large": 3 }
+{ "command": "list", "venue": "VenueOne" }
+{ "command": "list", "venue": "VenueTwo" }
+{ "command": "list", "venue": "VenueThree" }
