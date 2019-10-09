@@ -26,14 +26,39 @@ public class LocalDateRange {
 	}
 
 	/**
+	 * Check if dateStart->dateEnd overlaps rangeStart->rangeEnd (inclusive)
+	 * 
+	 * @param dateStart
+	 * @param dateEnd
+	 * @param rangeStart
+	 * @param rangeEnd
+	 * @return boolean
+	 */
+	private static boolean overlaps(LocalDate dateStart, LocalDate dateEnd, LocalDate rangeStart, LocalDate rangeEnd) {
+
+		return ((dateStart.isBefore(rangeEnd) || dateStart.isEqual(rangeEnd))
+				&& (dateEnd.isAfter(rangeStart) || dateEnd.isEqual(rangeStart)));
+	}
+
+	/**
+	 * Check if dateRange1 overlaps dateRange2 (inclusive)
+	 * 
+	 * @param dateRange1
+	 * @param dateRange2
+	 * @return boolean
+	 */
+	private static boolean overlaps(LocalDateRange dateRange1, LocalDateRange dateRange2) {
+		return overlaps(dateRange1.getStart(), dateRange1.getEnd(), dateRange2.getStart(), dateRange2.getEnd());
+	}
+
+	/**
 	 * Check if the date overlaps another LocalDateRange
 	 * 
 	 * @param dateRange
 	 * @return boolean
 	 */
 	public boolean overlaps(LocalDateRange dateRange) {
-		return DateUtils.dateRangeOverlapsDateRange(this.dateStart, this.dateEnd, dateRange.getStart(),
-				dateRange.getEnd());
+		return overlaps(this, dateRange);
 	}
 
 	/**
@@ -44,7 +69,7 @@ public class LocalDateRange {
 	 * @return boolean
 	 */
 	public boolean overlaps(LocalDate dateStart, LocalDate dateEnd) {
-		return DateUtils.dateRangeOverlapsDateRange(this.dateStart, this.dateEnd, dateStart, dateEnd);
+		return overlaps(this.dateStart, this.dateEnd, dateStart, dateEnd);
 
 	}
 

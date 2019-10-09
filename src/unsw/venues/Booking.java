@@ -41,8 +41,8 @@ public class Booking {
 		ArrayList<Booking> result = new ArrayList<Booking>();
 
 		for (Booking booking : bookings) {
-			if (DateUtils.dateRangeOverlapsDateRange(booking.getStartDate(), booking.getEndDate(), startDate,
-					endDate)) {
+
+			if (booking.getDateRange().overlaps(startDate, endDate)) {
 				result.add(booking);
 			}
 		}
