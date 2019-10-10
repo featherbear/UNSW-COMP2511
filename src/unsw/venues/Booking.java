@@ -8,8 +8,7 @@ public class Booking {
 	private String id;
 
 	private ArrayList<Room> rooms;
-	private LocalDate startDate;
-	private LocalDate endDate;
+	private LocalDateRange dateRange;
 
 	/**
 	 * Get a booking that matches an ID from a list of bookings
@@ -32,50 +31,20 @@ public class Booking {
 	 * Get bookings that are within a date range
 	 * 
 	 * @param bookings
-	 * @param startDate || null
-	 * @param endDate   || null
+	 * @param dateRange
 	 * @return ArrayList<Booking>
 	 */
-	public static ArrayList<Booking> getBookingsByDateRange(ArrayList<Booking> bookings, LocalDate startDate,
-			LocalDate endDate) {
+	public static ArrayList<Booking> getBookingsByDateRange(ArrayList<Booking> bookings, LocalDateRange dateRange) {
 		ArrayList<Booking> result = new ArrayList<Booking>();
 
 		for (Booking booking : bookings) {
 
-			if (booking.getDateRange().overlaps(startDate, endDate)) {
+			if (booking.getDateRange().overlaps(dateRange)) {
 				result.add(booking);
 			}
 		}
 
 		return result;
-	}
-
-	/**
-	 * Get bookings that are within a date range
-	 * 
-	 * @param bookings
-	 * @param dateRange
-	 * @return ArrayList<Booking>
-	 */
-	public static ArrayList<Booking> getBookingsByDateRange(ArrayList<Booking> bookings, LocalDateRange dateRange) {
-		return getBookingsByDateRange(bookings, dateRange.getStart(), dateRange.getEnd());
-	}
-
-	/**
-	 * Creates a booking
-	 * 
-	 * @param venue
-	 * @param id
-	 * @param startDate
-	 * @param endDate
-	 */
-	public Booking(Venue venue, String id, LocalDate startDate, LocalDate endDate) {
-		this.venue = venue;
-		this.id = id;
-		this.rooms = new ArrayList<Room>();
-
-		this.startDate = startDate;
-		this.endDate = endDate;
 	}
 
 	/**
@@ -86,7 +55,11 @@ public class Booking {
 	 * @param dateRange
 	 */
 	public Booking(Venue venue, String id, LocalDateRange dateRange) {
-		this(venue, id, dateRange.getStart(), dateRange.getEnd());
+		this.venue = venue;
+		this.id = id;
+		this.rooms = new ArrayList<Room>();
+
+		this.dateRange = dateRange;
 	}
 
 	/**
@@ -129,21 +102,21 @@ public class Booking {
 	 * @return Booking start date
 	 */
 	public LocalDate getStartDate() {
-		return this.startDate;
-	}
-
-	/**
-	 * @return Booking date range
-	 */
-	public LocalDateRange getDateRange() {
-		return new LocalDateRange(this.startDate, this.endDate);
+		return this.dateRange.getStart();
 	}
 
 	/**
 	 * @return Booking end date
 	 */
 	public LocalDate getEndDate() {
-		return this.endDate;
+		return this.dateRange.getEnd();
+	}
+
+	/**
+	 * @return Booking date range
+	 */
+	public LocalDateRange getDateRange() {
+		return this.dateRange;
 	}
 
 	/**
@@ -199,8 +172,7 @@ public class Booking {
 			return false;
 		}
 
-		this.startDate = dateRange.getStart();
-		this.endDate = dateRange.getEnd();
+		this.dateRange = dateRange;
 
 		this.rooms.clear();
 

@@ -142,7 +142,10 @@ public class VenueHireSystem {
 		/*
 		 * Ignored considerations (safe system)
 		 * 
-		 * 1) startDate is after endDate 2) duplicate id
+		 * 
+		 * 1) startDate is after endDate
+		 * 
+		 * 2) duplicate id
 		 */
 
 		LocalDateRange dateRange = new LocalDateRange(start, end);
