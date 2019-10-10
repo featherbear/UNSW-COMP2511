@@ -14,7 +14,7 @@ test() {
   if [ $? -ne 0 ]
   then
     echo ${RED}'  "'$1'" did not match "'$2'"'${NC}
-    echo "$RESULT" | head -n 10
+    # echo "$RESULT" # | head -n 10
   else
     echo ${GREEN}'  Success'${NC}
   fi
