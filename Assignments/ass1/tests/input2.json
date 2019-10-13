@@ -1,0 +1,39 @@
+{ "command": "room", "venue": "VenueOne", "room": "A", "size": "small" }
+{ "command": "room", "venue": "VenueTwo", "room": "A", "size": "small" }
+{ "command": "room", "venue": "VenueTwo", "room": "B", "size": "medium" }
+{ "command": "room", "venue": "VenueThree", "room": "1", "size": "large" }
+{ "command": "room", "venue": "VenueThree", "room": "2", "size": "large" }
+{ "command": "room", "venue": "VenueThree", "room": "3", "size": "large" }
+{ "command": "room", "venue": "VenueThree", "room": "4", "size": "large" }
+{ "command": "room", "venue": "VenueThree", "room": "5", "size": "large" }
+{ "command": "request", "id": "FirstVenueOne", "start": "1111-11-11", "end": "1111-11-11" , "small": 1, "medium": 0, "large": 0 }
+{ "command": "list", "venue": "VenueOne" }
+{ "command": "list", "venue": "VenueTwo" }
+{ "command": "list", "venue": "VenueThree" }
+{ "command": "change", "id": "FirstVenueOne", "start": "1111-11-11", "end": "1111-11-11" , "small": 1, "medium": 0, "large": 0 }
+{ "command": "list", "venue": "VenueOne" }
+{ "command": "list", "venue": "VenueTwo" }
+{ "command": "list", "venue": "VenueThree" }
+{ "command": "change", "id": "FirstVenueOne", "start": "1111-11-11", "end": "1111-11-11" , "small": 0, "medium": 0, "large": 1 }
+{ "command": "change", "id": "FirstVenueOne", "start": "1111-11-11", "end": "1111-11-11" , "small": 1, "medium": 1, "large": 0 }
+{ "command": "list", "venue": "VenueOne" }
+{ "command": "list", "venue": "VenueTwo" }
+{ "command": "list", "venue": "VenueThree" }
+{ "command": "change", "id": "FirstVenueOne", "start": "1111-11-11", "end": "1111-11-11" , "small": 0, "medium": 1, "large": 0 }
+{ "command": "list", "venue": "VenueOne" }
+{ "command": "list", "venue": "VenueTwo" }
+{ "command": "list", "venue": "VenueThree" }
+{ "command": "request", "id": "FirstVenueThree", "start": "1111-11-11", "end": "1111-11-11" , "small": 0, "medium": 0, "large": 2 }
+{ "command": "list", "venue": "VenueOne" }
+{ "command": "list", "venue": "VenueTwo" }
+{ "command": "list", "venue": "VenueThree" }
+{ "command": "request", "id": "SecondVenueThree", "start": "1111-11-11", "end": "1111-11-11" , "small": 0, "medium": 0, "large": 2 }
+{ "command": "list", "venue": "VenueOne" }
+{ "command": "list", "venue": "VenueTwo" }
+{ "command": "list", "venue": "VenueThree" }
+{ "command": "cancel", "id": "FirstVenueThree"}
+{ "command": "list", "venue": "VenueThree" }
+{ "command": "change", "id": "SecondVenueThree", "start": "1111-11-11", "end": "1111-11-11" , "small": 0, "medium": 0, "large": 3 }
+{ "command": "list", "venue": "VenueOne" }
+{ "command": "list", "venue": "VenueTwo" }
+{ "command": "list", "venue": "VenueThree" }

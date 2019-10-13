@@ -1,0 +1,138 @@
+{
+  "venue": "ListOrder",
+  "rooms": ["A"],
+  "status": "success"
+}
+[
+  {
+    "reservations": [{
+      "start": "1111-11-11",
+      "end": "1111-11-11",
+      "id": "1"
+    }],
+    "room": "A"
+  },
+  {
+    "reservations": [],
+    "room": "B"
+  },
+  {
+    "reservations": [],
+    "room": "C"
+  }
+]
+{
+  "venue": "ListOrder",
+  "rooms": ["A"],
+  "status": "success"
+}
+[
+  {
+    "reservations": [
+      {
+        "start": "1111-11-11",
+        "end": "1111-11-11",
+        "id": "1"
+      },
+      {
+        "start": "1111-11-12",
+        "end": "1111-11-11",
+        "id": "2"
+      }
+    ],
+    "room": "A"
+  },
+  {
+    "reservations": [],
+    "room": "B"
+  },
+  {
+    "reservations": [],
+    "room": "C"
+  }
+]
+{
+  "venue": "ListOrder",
+  "rooms": ["A"],
+  "status": "success"
+}
+[
+  {
+    "reservations": [
+      {
+        "start": "1111-11-10",
+        "end": "1111-11-10",
+        "id": "3"
+      },
+      {
+        "start": "1111-11-11",
+        "end": "1111-11-11",
+        "id": "1"
+      },
+      {
+        "start": "1111-11-12",
+        "end": "1111-11-11",
+        "id": "2"
+      }
+    ],
+    "room": "A"
+  },
+  {
+    "reservations": [],
+    "room": "B"
+  },
+  {
+    "reservations": [],
+    "room": "C"
+  }
+]
+{
+  "venue": "ListOrder",
+  "rooms": ["A"],
+  "status": "success"
+}
+{
+  "venue": "ListOrder",
+  "rooms": ["A"],
+  "status": "success"
+}
+[
+  {
+    "reservations": [
+      {
+        "start": "1110-11-11",
+        "end": "1110-11-11",
+        "id": "5"
+      },
+      {
+        "start": "1111-11-01",
+        "end": "1111-11-01",
+        "id": "4"
+      },
+      {
+        "start": "1111-11-10",
+        "end": "1111-11-10",
+        "id": "3"
+      },
+      {
+        "start": "1111-11-11",
+        "end": "1111-11-11",
+        "id": "1"
+      },
+      {
+        "start": "1111-11-12",
+        "end": "1111-11-11",
+        "id": "2"
+      }
+    ],
+    "room": "A"
+  },
+  {
+    "reservations": [],
+    "room": "B"
+  },
+  {
+    "reservations": [],
+    "room": "C"
+  }
+]

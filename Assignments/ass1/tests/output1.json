@@ -1,0 +1,130 @@
+[
+  {
+    "reservations": [],
+    "room": "A"
+  },
+  {
+    "reservations": [],
+    "room": "C"
+  },
+  {
+    "reservations": [],
+    "room": "B"
+  }
+]
+{"status": "rejected"}
+{"status": "rejected"}
+{
+  "venue": "DifferentSizesAreSeparate",
+  "rooms": ["A"],
+  "status": "success"
+}
+[
+  {
+    "reservations": [{
+      "start": "1111-11-11",
+      "end": "1111-11-11",
+      "id": "OneSmall"
+    }],
+    "room": "A"
+  },
+  {
+    "reservations": [],
+    "room": "C"
+  },
+  {
+    "reservations": [],
+    "room": "B"
+  }
+]
+{"status": "rejected"}
+{
+  "venue": "DifferentSizesAreSeparate",
+  "rooms": [
+    "B",
+    "C"
+  ],
+  "status": "success"
+}
+[
+  {
+    "reservations": [{
+      "start": "1111-11-11",
+      "end": "1111-11-11",
+      "id": "OneSmall"
+    }],
+    "room": "A"
+  },
+  {
+    "reservations": [{
+      "start": "1111-11-11",
+      "end": "1111-11-11",
+      "id": "OneSmallOneMedium"
+    }],
+    "room": "C"
+  },
+  {
+    "reservations": [{
+      "start": "1111-11-11",
+      "end": "1111-11-11",
+      "id": "OneSmallOneMedium"
+    }],
+    "room": "B"
+  }
+]
+{
+  "venue": "DifferentSizesAreSeparate",
+  "rooms": [
+    "A",
+    "B",
+    "C"
+  ],
+  "status": "success"
+}
+[
+  {
+    "reservations": [
+      {
+        "start": "1111-11-11",
+        "end": "1111-11-11",
+        "id": "OneSmall"
+      },
+      {
+        "start": "1111-11-12",
+        "end": "1111-11-12",
+        "id": "AllThreeDifferentDate"
+      }
+    ],
+    "room": "A"
+  },
+  {
+    "reservations": [
+      {
+        "start": "1111-11-11",
+        "end": "1111-11-11",
+        "id": "OneSmallOneMedium"
+      },
+      {
+        "start": "1111-11-12",
+        "end": "1111-11-12",
+        "id": "AllThreeDifferentDate"
+      }
+    ],
+    "room": "C"
+  },
+  {
+    "reservations": [
+      {
+        "start": "1111-11-11",
+        "end": "1111-11-11",
+        "id": "OneSmallOneMedium"
+      },
+      {
+        "start": "1111-11-12",
+        "end": "1111-11-12",
+        "id": "AllThreeDifferentDate"
+      }
+    ],
+    "room": "B"
+  }
+]

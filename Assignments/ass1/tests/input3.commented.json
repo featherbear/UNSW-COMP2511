@@ -1,0 +1,21 @@
+# Check date clashes
+## First create the rooms
+{ "command": "room", "venue": "DateClash", "room": "A", "size": "small" }
+{ "command": "room", "venue": "DateClash", "room": "B", "size": "small" }
+{ "command": "room", "venue": "DateClash", "room": "C", "size": "small" }
+## Try booking one small room, should succeed
+{ "command": "request", "id": "1", "start": "1111-11-11", "end": "1111-11-11" , "small": 1, "medium": 0, "large": 0 }
+{ "command": "list", "venue": "DateClash" }
+## Try booking two small rooms on the same day, should succeed
+{ "command": "request", "id": "2", "start": "1111-11-11", "end": "1111-11-11" , "small": 2, "medium": 0, "large": 0 }
+{ "command": "list", "venue": "DateClash" }
+## Try booking one small room on the same day, should error
+{ "command": "request", "id": "3", "start": "1111-11-11", "end": "1111-11-11" , "small": 1, "medium": 0, "large": 0 }
+## Try booking three small rooms on day+1, should succeed
+{ "command": "request", "id": "4", "start": "1111-11-12", "end": "1111-11-12" , "small": 3, "medium": 0, "large": 0 }
+## Try booking three small rooms on day+1 for two days, should error
+{ "command": "request", "id": "5", "start": "1111-11-12", "end": "1111-11-13" , "small": 3, "medium": 0, "large": 0 }
+## Try booking three small rooms on day+2, should succeed
+{ "command": "request", "id": "6", "start": "1111-11-13", "end": "1111-11-13" , "small": 1, "medium": 0, "large": 0 }
+{ "command": "list", "venue": "DateClash" }
+

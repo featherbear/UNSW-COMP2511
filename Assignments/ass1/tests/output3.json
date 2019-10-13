@@ -1,0 +1,125 @@
+{
+  "venue": "DateClash",
+  "rooms": ["A"],
+  "status": "success"
+}
+[
+  {
+    "reservations": [{
+      "start": "1111-11-11",
+      "end": "1111-11-11",
+      "id": "1"
+    }],
+    "room": "A"
+  },
+  {
+    "reservations": [],
+    "room": "B"
+  },
+  {
+    "reservations": [],
+    "room": "C"
+  }
+]
+{
+  "venue": "DateClash",
+  "rooms": [
+    "B",
+    "C"
+  ],
+  "status": "success"
+}
+[
+  {
+    "reservations": [{
+      "start": "1111-11-11",
+      "end": "1111-11-11",
+      "id": "1"
+    }],
+    "room": "A"
+  },
+  {
+    "reservations": [{
+      "start": "1111-11-11",
+      "end": "1111-11-11",
+      "id": "2"
+    }],
+    "room": "B"
+  },
+  {
+    "reservations": [{
+      "start": "1111-11-11",
+      "end": "1111-11-11",
+      "id": "2"
+    }],
+    "room": "C"
+  }
+]
+{"status": "rejected"}
+{
+  "venue": "DateClash",
+  "rooms": [
+    "A",
+    "B",
+    "C"
+  ],
+  "status": "success"
+}
+{"status": "rejected"}
+{
+  "venue": "DateClash",
+  "rooms": ["A"],
+  "status": "success"
+}
+[
+  {
+    "reservations": [
+      {
+        "start": "1111-11-11",
+        "end": "1111-11-11",
+        "id": "1"
+      },
+      {
+        "start": "1111-11-12",
+        "end": "1111-11-12",
+        "id": "4"
+      },
+      {
+        "start": "1111-11-13",
+        "end": "1111-11-13",
+        "id": "6"
+      }
+    ],
+    "room": "A"
+  },
+  {
+    "reservations": [
+      {
+        "start": "1111-11-11",
+        "end": "1111-11-11",
+        "id": "2"
+      },
+      {
+        "start": "1111-11-12",
+        "end": "1111-11-12",
+        "id": "4"
+      }
+    ],
+    "room": "B"
+  },
+  {
+    "reservations": [
+      {
+        "start": "1111-11-11",
+        "end": "1111-11-11",
+        "id": "2"
+      },
+      {
+        "start": "1111-11-12",
+        "end": "1111-11-12",
+        "id": "4"
+      }
+    ],
+    "room": "C"
+  }
+]

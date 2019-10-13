@@ -1,0 +1,21 @@
+# Check cancelling
+## First create the rooms
+{ "command": "room", "venue": "EventCancel", "room": "A", "size": "small" }
+{ "command": "room", "venue": "EventCancel", "room": "B", "size": "medium" }
+{ "command": "room", "venue": "EventCancel", "room": "C", "size": "large" }
+## Try booking one small and one medium room, should succeed
+{ "command": "request", "id": "1", "start": "1111-11-11", "end": "1111-11-11" , "small": 1, "medium": 1, "large": 0 }
+{ "command": "list", "venue": "EventCancel" }
+## Try cancel that booking, should succeed
+{ "command": "cancel", "id": "1"}
+{ "command": "list", "venue": "EventCancel" }
+## Try booking another small and medium room, should succeed
+{ "command": "request", "id": "2", "start": "1111-11-11", "end": "1111-11-11" , "small": 1, "medium": 1, "large": 0 }
+## Try booking one medium and one large room on the same day, should error
+{ "command": "request", "id": "3", "start": "1111-11-11", "end": "1111-11-11" , "small": 0, "medium": 1, "large": 1 }
+## Try cancel booking #2, should succeed
+{ "command": "cancel", "id": "2"}
+## Try rebooking one medium and one large room on the same day, should succeed
+{ "command": "request", "id": "3", "start": "1111-11-11", "end": "1111-11-11" , "small": 0, "medium": 1, "large": 1 }
+{ "command": "list", "venue": "EventCancel" }
+

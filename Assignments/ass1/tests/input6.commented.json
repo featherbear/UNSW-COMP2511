@@ -1,0 +1,122 @@
+# Integration test, at UNSW!
+## First create the rooms
+{ "command": "room", "venue": "J17", "room": "kora", "size": "large" }
+{ "command": "room", "venue": "J17", "room": "sitar", "size": "large" }
+{ "command": "room", "venue": "J17", "room": "horn", "size": "small" }
+{ "command": "room", "venue": "J17", "room": "bugle", "size": "small" }
+{ "command": "room", "venue": "J17", "room": "oboe", "size": "large" }
+{ "command": "room", "venue": "J17", "room": "flute", "size": "large" }
+{ "command": "room", "venue": "J17", "room": "cello", "size": "small" }
+{ "command": "room", "venue": "J17", "room": "viola", "size": "small" }
+{ "command": "room", "venue": "K17", "room": "clavier", "size": "medium" }
+{ "command": "room", "venue": "K17", "room": "organ", "size": "medium" }
+{ "command": "room", "venue": "K17", "room": "piano", "size": "small" }
+{ "command": "room", "venue": "K17", "room": "tabla", "size": "large" }
+{ "command": "room", "venue": "K17", "room": "bongo", "size": "large" }
+{ "command": "room", "venue": "K17", "room": "drum", "size": "large" }
+{ "command": "room", "venue": "K17", "room": "oud", "size": "medium" }
+{ "command": "room", "venue": "K17", "room": "lyre", "size": "medium" }
+## Check that the rooms exists
+{ "command": "list", "venue": "K17" }
+{ "command": "list", "venue": "J17" }
+#
+#
+#
+#
+#
+#
+# ============================
+# Story time.
+# ============================
+#
+#
+#
+#
+#
+## [ I am a pretentious bad guy who wants to book all of the rooms at the same time.
+##   Because I don't know how many rooms there are, I'll just book 99 of each!
+##   But CSE is smart and won't let me do that!
+##   Because this booking system was written by a *drumroll* COMP2511 student!
+##   --- Woah!!!
+## ]
+{ "command": "request", start: "2019-01-01", end: "2019-12-31", id: "BadGuyTakesOverCSE", "small": 99, "medium": 99, "large": 99 }
+## One day, the CSE faculty decide to create a one-week intensive course, COMP2533 - Programming Languages Better Than Java
+## They decide that this course needs 7 large rooms: kora, sitar, oboe, flute, tabla, bongo and drum
+{ "command": "request", start: "2019-09-30", end: "2019-10-04", id: "COMP2533", "small": 0, "medium": 0, "large": 7 }
+## But wait! The booking system has a flaw!
+## The student who programmed this booking system only implemented bookings across a single venue!
+## Buh buhhhhh - looks like the CSE staff have to make do without 7 rooms...
+## Instead, they decide to book 3 small and 3 large rooms
+{ "command": "request", start: "2019-09-30", end: "2019-10-04", id: "COMP2533", "small": 3, "medium": 0, "large": 3 }
+{ "command": "list", "venue": "K17" }
+{ "command": "list", "venue": "J17" }
+## * a few -time intervals- later *
+## Looks like alot of people are really interested in COMP2533!
+## In fact, the CSE staff think that 3 small and 3 large rooms are not enough!
+## It's time to change the booking for 3 medium and 3 large rooms!
+## Understanding that J17 doesn't have any medium rooms, they acknowledge that they'll be changed to the K17 venue!
+{ "command": "change", start: "2019-09-30", end: "2019-10-04", id: "COMP2533", "small": 0, "medium": 3, "large": 3 }
+## Score! The CSE staff (should) have secured clavier, organ and oud for their medium rooms, and tabla, bongo and drum for their large rooms.
+## All is well!
+##
+##
+## [ Our pretentious bad guy has gotten news that COMP2533 is still growing in popularity!
+##   Spiteful of his failure, our pretentious bad guy decides to book the remaining rooms in K17 - one small and one medium room.
+## ]
+{ "command": "request", start: "2019-09-30", end: "2019-10-04", id: "TakeThatCSEMuahHahahahahahaHAHAHA", "small": 1, "medium": 1, "large": 0 }
+##
+## - back at CSE headquarter land -
+## A: "Oh no, we've forgotten to process all of the applications of the new cohort, and Pretentious Bad Guy has booked the spare small and medium rooms!"
+## B: "Yikes. We simply cannot just prevent them access to this wonderful COMP2533 course"
+## C: "Think of the children! Imagine writing Java professionally!!?!?!?!"
+## A: "Actua-"
+## *B cuts in*
+## B: "How about we postpone our booking to the week after... I mean no one really wants trimesters anyway"
+## A: "Ahhhh I guess we will have to do just that :("
+##
+{ "command": "change", start: "2019-10-07", end: "2019-10-11", id: "COMP2533", "small": 1, "medium": 4, "large": 3 }
+##
+##
+## [ Pretentious bad guy has finally succeeded in his plan!
+##   But, alas... there was something... missing
+##   There was an emptiness... a hollow void lodged into his heart
+##   He looked back at the picture of his two children, both Civil Engineering students at USYD.
+##   ... He felt... pity
+##   Pity for all of the soon-to-be UNSW students.
+##   He did not want anyone to find themselves in the same fate as his children.
+##   Despite his anger, the thought of people doing Civ Eng at USYD was a burden too great to bear.
+##   He decided, to cancel those bookings.
+## ]
+## // Disclaimer: Civil Engineering is a great degree, and USYD is a great university too - just not as good as UNSW. 
+{ "command": "cancel", id: "TakeThatCSEMuahHahahahahahaHAHAHA" }
+{ "command": "list", "venue": "K17" }
+{ "command": "list", "venue": "J17" }
+##
+## ---------------------------
+## Nobody: 
+## Absolutely no one:
+## Not a single soul in the world:
+## CSE Staff: *CHANGE BOOKING*
+## ---------------------------
+{ "command": "change", start: "2019-09-30", end: "2019-10-04", id: "COMP2533", "small": 1, "medium": 4, "large": 3 }
+{ "command": "list", "venue": "K17" }
+{ "command": "list", "venue": "J17" }
+##
+## The staff at CSE were joyous, they had successfuly changed their booking back to the intended time period!
+## Pretentious bad guy's children decided to give up the facade of happiness (that was doing Civil Engineering at USYD),
+## and instead venture into the world of CSE and all languages that were not Java. 
+##
+## Is this the end?
+## Will there be more?
+## Only time will tell.
+##
+## But hey, budget cuts
+##
+##
+##
+##
+##
+##
+## Wow, you think you're soooo funny writing up a story inside your test file.
+## No one's gonna see it
+## Dummy.

@@ -1,0 +1,13 @@
+{ "command": "room", "venue": "DateClash", "room": "A", "size": "small" }
+{ "command": "room", "venue": "DateClash", "room": "B", "size": "small" }
+{ "command": "room", "venue": "DateClash", "room": "C", "size": "small" }
+{ "command": "request", "id": "1", "start": "1111-11-11", "end": "1111-11-11" , "small": 1, "medium": 0, "large": 0 }
+{ "command": "list", "venue": "DateClash" }
+{ "command": "request", "id": "2", "start": "1111-11-11", "end": "1111-11-11" , "small": 2, "medium": 0, "large": 0 }
+{ "command": "list", "venue": "DateClash" }
+{ "command": "request", "id": "3", "start": "1111-11-11", "end": "1111-11-11" , "small": 1, "medium": 0, "large": 0 }
+{ "command": "request", "id": "4", "start": "1111-11-12", "end": "1111-11-12" , "small": 3, "medium": 0, "large": 0 }
+{ "command": "request", "id": "5", "start": "1111-11-12", "end": "1111-11-13" , "small": 3, "medium": 0, "large": 0 }
+{ "command": "request", "id": "6", "start": "1111-11-13", "end": "1111-11-13" , "small": 1, "medium": 0, "large": 0 }
+{ "command": "list", "venue": "DateClash" }
+
