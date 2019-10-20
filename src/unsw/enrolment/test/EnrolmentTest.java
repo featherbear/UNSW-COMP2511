@@ -53,20 +53,29 @@ public class EnrolmentTest {
 		if (comp1531Enrolment == null)
 			System.out.println("Can't enrol in COMP1531");
 
+		Grade grade;
+
 		// Give the student a passing grade for COMP1511
 		comp1511Enrolment.assignMark(65);
 
 		// Assign marks for comp1511
 		// TODO Give the student a passing mark for assignment 1
-		Grade ass1 = comp1511Enrolment.getGrade().addComponent(51).setName("ass1");
+		grade = comp1511Enrolment.getGrade();
 
-		Grade ass2 = comp1511Enrolment.getGrade().addAvgComponent().setName("ass2");
+		Grade ass1 = new Grade("ass1", 51);
+		grade.addComponent(ass1);
+//		System.out.println(ass1);
+
+		Grade ass2 = grade.addAvgComponent().setName("ass2");
+//		System.out.println(ass2);
 
 		// TODO Give the student a passing mark for milestone 1 of assignment 2
-		System.out.println(ass2.addComponent(70).setName("milestone1"));
+		Grade milestone1 = ass2.addComponent("milestone1", 70);
+//		System.out.println(milestone1);
 
 		// TODO Give the student a passing mark for milestone 2 of assignment 2
-		System.out.println(ass2.addComponent(50).setName("milestone2"));
+		Grade milestone2 = ass2.addComponent("milestone2", 50);
+//		System.out.println(milestone2);
 
 		// TODO Give the student an assignment 2 mark which is the average of
 		// milestone 1 and 2
@@ -78,12 +87,16 @@ public class EnrolmentTest {
 		Grade prac = Grade.newSumGrade(ass1, ass2).setName("prac");
 		System.out.println(prac);
 
+		grade = comp1511Enrolment.assignGrade(prac);
+		System.out.println(grade);
+
 		// TODO Give the student a passing exam mark.
-		Grade exam = new Grade(50).setName("exam");
+		Grade exam = new Grade("exam", 50);
 		System.out.println(exam);
 
-		comp1511Enrolment.assignGrade(prac, exam);
-		System.out.println(comp1511Enrolment.getGrade());
+		grade = comp1511Enrolment.assignGrade(prac, exam);
+
+		// Issue: Unsubscribing
 
 		// Enrol the student in 2521 (this should succeed as they have met
 		// the prereqs)

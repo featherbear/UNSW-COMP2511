@@ -36,22 +36,35 @@ public class Enrolment {
 
 	public Grade assignMark(int mark) {
 		if (this.grade == null) {
-			this.grade = new Grade(mark);
-		} else {
-			this.grade.setMark(mark);
+			this.grade = new Grade().setName("course");
+			subscribeToGrade(this.grade);
 		}
 
+		this.grade.setMark(mark);
+
 		return this.grade;
+
 	}
 
 	public Grade assignGrade(Grade... grades) {
-		Grade newGrade = new Grade().addSumComponent();
-		for (Grade grade : grades) {
-			newGrade.addComponent(grade);
-		}
-		this.grade = newGrade;
-		return newGrade;
+		this.grade = Grade.newSumGrade(grades).setName("course");
+		subscribeToGrade(this.grade);
+		return this.grade;
+	}
 
+	private GradeObserver thisSubscriber;
+
+	private void subscribeToGrade(Grade grade) {
+		if (thisSubscriber == null) {
+			thisSubscriber = (g, data) -> {
+				System.out.println("Update!!!");
+				System.out.println("Parent: " + String.format("%s - %d", g.getName(), g.getMark()));
+				System.out.println("Data: " + data);
+				System.out.println("\n\n");
+			};
+		}
+
+		grade.subscribe(thisSubscriber);
 	}
 
 	public Grade getGrade() {

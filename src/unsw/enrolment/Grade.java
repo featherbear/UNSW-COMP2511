@@ -13,8 +13,44 @@ public class Grade {
 	private ArrayList<Grade> components;
 	private MarkingStrategy strategy;
 
-	public Grade(int mark) {
+	private ArrayList<GradeObserver> subscribers;
+	private GradeObserver thisBubbler;
+
+	public void notifySubscribers() {
+		this.notifySubscribers(this);
+	}
+
+	private void notifySubscribers(Grade data) {
+		for (GradeObserver subscriber : this.subscribers) {
+			subscriber.update(this, data);
+		}
+	}
+
+	public void subscribe(GradeObserver subscriber) {
+		if (this.subscribers.contains(subscriber)) {
+			return;
+		}
+		this.subscribers.add(subscriber);
+	}
+
+	public void unsubscribe(GradeObserver subscriber) {
+		this.subscribers.remove(subscriber);
+	}
+
+	private void registerBubblingSubscription(Grade grade) {
+		// Anonymous functions change their memory addresses, so set it once.
+		if (thisBubbler == null) {
+			this.thisBubbler = (parent, data) -> {
+				this.notifySubscribers(data);
+			};
+		}
+
+		grade.subscribe(thisBubbler);
+	}
+
+	public Grade(String name, int mark) {
 		this();
+		this.setName(name);
 		this.setMark(mark);
 	}
 
@@ -23,6 +59,7 @@ public class Grade {
 		this.name = "";
 		this.strategy = null;
 		this.components = new ArrayList<Grade>();
+		this.subscribers = new ArrayList<GradeObserver>();
 	}
 
 	private static String getMarkString(int mark) {
@@ -64,6 +101,7 @@ public class Grade {
 //		}
 
 		this.mark = mark;
+		notifySubscribers();
 
 		return this;
 	}
@@ -83,9 +121,7 @@ public class Grade {
 	}
 
 	public Grade addSumComponent() {
-		Grade component = newSumGrade();
-		this.components.add(component);
-		return component;
+		return this.addComponent(newSumGrade());
 	}
 
 	static public Grade newAvgGrade() {
@@ -95,43 +131,53 @@ public class Grade {
 	}
 
 	public Grade addAvgComponent() {
-		Grade component = newAvgGrade();
-		this.components.add(component);
-		return component;
-	}
-
-	public Grade addComponent() {
-		Grade component = new Grade();
-		this.components.add(component);
-		return component;
-	}
-
-	public Grade addComponent(int mark) {
-		Grade component = addComponent();
-		component.setMark(mark);
-		return component;
+		return this.addComponent(newAvgGrade());
 	}
 
 	public Grade addComponent(Grade grade) {
+		if (this == grade) {
+			throw new Error("Attempted addComponent to self");
+		}
+
+		if (this.strategy == null) {
+			this.strategy = new Sum();
+		}
+
 		this.components.add(grade);
-		return this;
+		registerBubblingSubscription(grade);
+
+		if (grade.strategy == null) {
+			notifySubscribers();
+		}
+
+		return grade;
+	}
+
+	public Grade addComponent(String name, int mark) {
+		// return this.addComponent().setMark(mark);
+		return this.addComponent(new Grade().setName(name).setMark(mark));
 	}
 
 	public Grade addComponent(Grade... grades) {
 		for (Grade grade : grades) {
-			this.components.add(grade);
+			this.addComponent(grade);
 		}
 		return this;
 	}
 
 	@Override
 	public String toString() {
-		if (this.components.size() > 0) {
+		if (this.strategy != null) {
 			String grades = "";
 			for (Grade component : this.components) {
 				grades += component + ", ";
 			}
-			return String.format("%s(%d)[%s]", getName(), this.getMark(), grades.substring(0, grades.length() - 2));
+
+			if (grades.length() >= 2) {
+				grades = grades.substring(0, grades.length() - 2);
+			}
+
+			return String.format("%s(%d)[%s]", getName(), this.getMark(), grades);
 		} else {
 			return String.format("%s(%d)", getName(), this.getMark());
 		}
