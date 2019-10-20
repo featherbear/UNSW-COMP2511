@@ -1,7 +1,11 @@
 package unsw.enrolment;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 public class Enrolment {
 
@@ -9,6 +13,7 @@ public class Enrolment {
 	private Grade grade;
 	private Student student;
 	private List<Session> sessions;
+	private Logger logger;
 
 	public Enrolment(CourseOffering offering, Student student, Session... sessions) {
 		this.offering = offering;
@@ -20,6 +25,24 @@ public class Enrolment {
 		for (Session session : sessions) {
 			this.sessions.add(session);
 		}
+
+		String logName = String.format("%s-%s-%s", this.getCourse().getCourseCode(), this.getTerm(),
+				this.getStudent().getZID());
+		logger = Logger.getLogger(logName);
+
+		FileHandler fh;
+
+		try {
+			fh = new FileHandler(logName + ".txt", true);
+			logger.addHandler(fh);
+
+			SimpleFormatter formatter = new SimpleFormatter();
+			fh.setFormatter(formatter);
+
+		} catch (SecurityException | IOException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	public Course getCourse() {
@@ -28,6 +51,10 @@ public class Enrolment {
 
 	public String getTerm() {
 		return offering.getTerm();
+	}
+
+	public Student getStudent() {
+		return this.student;
 	}
 
 	public boolean hasPassed() {
@@ -57,10 +84,7 @@ public class Enrolment {
 	private void subscribeToGrade(Grade grade) {
 		if (thisSubscriber == null) {
 			thisSubscriber = (g, data) -> {
-				System.out.println("Update!!!");
-				System.out.println("Parent: " + String.format("%s - %d", g.getName(), g.getMark()));
-				System.out.println("Data: " + data);
-				System.out.println("\n\n");
+				logger.info(String.format("Marks updated: %s -> %d", data.getName(), data.getMark()));
 			};
 		}
 
