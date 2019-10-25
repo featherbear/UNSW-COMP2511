@@ -16,19 +16,19 @@
 
 An individual repository for this lab has been created for you here (replace z5555555 with your own zID):
 
-https://gitlab.cse.unsw.edu.au/z5555555/19T2-cs2511-lab07
+https://gitlab.cse.unsw.edu.au/z5555555/19T3-cs2511-lab07
+
+This exercise assumes that you've done the **Project setup** steps from the project spec. Once you've done them, you can import this project into Eclipse and start doing the exercise.
 
 ## Preparation
 
-This lab follows a similar process to the week 7 tutorial for building a backend then connecting it to a JavaFX frontend. Attempting the lab without having attended the tutorial is not recommended.
-
 You may find the documentation for the following classes helpful:
 
-* [BooleanProperty](https://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/BooleanProperty.html)
-* [GridPane](https://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/GridPane.html)
-* [CheckBox](https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/CheckBox.html)
-* [Timeline](https://docs.oracle.com/javase/8/javafx/api/javafx/animation/Timeline.html)
-* [KeyFrame](https://docs.oracle.com/javase/8/javafx/api/javafx/animation/KeyFrame.html)
+* [BooleanProperty](https://openjfx.io/javadoc/11/javafx.base/javafx/beans/property/BooleanProperty.html)
+* [GridPane](https://openjfx.io/javadoc/11/javafx.base/javafx/scene/layout/GridPane.html)
+* [CheckBox](https://openjfx.io/javadoc/11/javafx.base/javafx/scene/control/CheckBox.html)
+* [Timeline](https://openjfx.io/javadoc/11/javafx.base/javafx/animation/Timeline.html)
+* [KeyFrame](https://openjfx.io/javadoc/11/javafx.base/javafx/animation/KeyFrame.html)
 
 ## Backend
 
@@ -49,7 +49,7 @@ Complete the definition of `unsw.automata.GameOfLife` so that it uses a 2D array
 
 A basic JUnit test has been provided for you in `unsw.automata.GameOfLifeTest`. Make sure the test passes.
 
-Commit and your changes for this part of the lab before moving on to the next.
+Commit your changes for this part of the lab before moving on to the next.
 
 ## Observer
 
@@ -71,7 +71,7 @@ Once again, commit your changes for this part of the lab before moving on to the
 
 Use JavaFX SceneBuilder to build a simple user interface for a game of life application.
 
-SceneBuilder is available on the lab machines at `2511 scenebuilder` and on your own computer by download from [here](https://gluonhq.com/products/scene-builder/#download) (to ensure compatibility, it is best to use the Java 8 version of SceneBuilder as we are using Java 8 in this course).
+SceneBuilder is available on the lab machines at `2511 scenebuilder` and on your own computer by download from [here](https://gluonhq.com/products/scene-builder/#download) (to ensure compatibility, it is best to use the Java 11 version of SceneBuilder as we are using Java 11 in this course).
 
 The UI will consist of two buttons and a grid of checkboxes, like this:
 
