@@ -35,16 +35,20 @@ public class GameOfLife {
 	public void ensureAlive(int x, int y) {
 		// Set the cell at (x,y) as alive
 		System.out.println(x + ", " + y);
-		this.cells[x][y].set(true);
+		cellProperty(x, y).set(true);
 	}
 
 	public void ensureDead(int x, int y) {
 		// Set the cell at (x,y) as dead
-		this.cells[x][y].set(false);
+		cellProperty(x, y).set(false);
 	}
 
 	public boolean isAlive(int x, int y) {
-		return this.cells[x][y].get();
+		return cellProperty(x, y).get();
+	}
+
+	public BooleanProperty cellProperty(int x, int y) {
+		return this.cells[x][y];
 	}
 
 	private static boolean isAlive(boolean[][] state, int x, int y) {
