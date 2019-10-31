@@ -17,16 +17,16 @@ import javafx.beans.property.SimpleBooleanProperty;
  */
 public class GameOfLife {
 
-	private static final int dim = 10;
+	public final int dimension = 10;
 
-	BooleanProperty[][] cells;
+	private BooleanProperty[][] cells;
 
 	public GameOfLife() {
-		this.cells = new BooleanProperty[dim][dim];
+		this.cells = new BooleanProperty[dimension][dimension];
 
 		// At the start all cells are dead
-		for (int i = 0; i < dim; i++) {
-			for (int j = 0; j < dim; j++) {
+		for (int i = 0; i < dimension; i++) {
+			for (int j = 0; j < dimension; j++) {
 				this.cells[i][j] = new SimpleBooleanProperty(false);
 			}
 		}
@@ -56,16 +56,16 @@ public class GameOfLife {
 	}
 
 	public void tick() {
-		boolean[][] oldState = new boolean[dim][dim];
+		boolean[][] oldState = new boolean[dimension][dimension];
 
-		for (int x = 0; x < dim; x++) {
-			for (int y = 0; y < dim; y++) {
+		for (int x = 0; x < dimension; x++) {
+			for (int y = 0; y < dimension; y++) {
 				oldState[x][y] = isAlive(x, y);
 			}
 		}
 
-		for (int x = 0; x < dim; x++) {
-			for (int y = 0; y < dim; y++) {
+		for (int x = 0; x < dimension; x++) {
+			for (int y = 0; y < dimension; y++) {
 				int n_neighbours = (int) getNeighbours(x, y).stream().filter(c -> isAlive(oldState, c.x, c.y)).count();
 				if (isAlive(x, y)) {
 					switch (n_neighbours) {
@@ -94,7 +94,7 @@ public class GameOfLife {
 				if (i == 0 && j == 0) {
 					continue;
 				}
-				neighbours.add(new Coordinate(mod(x + i, dim), mod(y + j, 10)));
+				neighbours.add(new Coordinate(mod(x + i, dimension), mod(y + j, 10)));
 			}
 		}
 		return neighbours;

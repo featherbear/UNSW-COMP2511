@@ -17,21 +17,22 @@ import javafx.stage.Stage;
  */
 public class GameOfLifeApplication extends Application {
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("Conway's Game of Life");
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		primaryStage.setTitle("Conway's Game of Life");
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("GameOfLifeView.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("GameOfLifeView.fxml"));
+		loader.setController(new GameOfLifeController());
 
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
+		Parent root = loader.load();
+		Scene scene = new Scene(root);
 
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
+		primaryStage.setScene(scene);
+		primaryStage.show();
+	}
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+	public static void main(String[] args) {
+		launch(args);
+	}
 
 }
