@@ -34,7 +34,6 @@ public class GameOfLife {
 
 	public void ensureAlive(int x, int y) {
 		// Set the cell at (x,y) as alive
-		System.out.println(x + ", " + y);
 		cellProperty(x, y).set(true);
 	}
 
