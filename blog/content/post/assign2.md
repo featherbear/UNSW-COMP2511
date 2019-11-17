@@ -16,8 +16,9 @@ sequenceDiagrams:
 
 ---
 
-The second assignment for this course was the this-is-not-a-Java-course™️ Dungeon Game in Java.  
+> [GitHub](https://github.com/featherbear/UNSW-COMP2511-ass2)
 
+The second assignment for this course was the this-is-not-a-Java-course™️ Dungeon Game in Java.  
 In the spirit of "You will work with other people in real programming jobs", this assignment was a pair group project. (_But like, you'll be working with people who know what they're doing, so it's really not the same experience... I think..._).
 
 The project consisted of three parts.
@@ -100,3 +101,5 @@ Making [DungeonConsole](https://featherbear.github.io/blog/post/dungeon-console/
 Whilst I had written the majority of the backend without reliance of JavaFX, there were some useful classes (namely the `BooleanProperty` and `IntegerProperty` classes). If I have time to kill, I might implement my own property change listeners so I can remove JavaFX as a dependency on the backend, and only for the JavaFX UI.
 
 ![](demo.gif)
+
+> [GitHub](https://github.com/featherbear/UNSW-COMP2511-ass2)
