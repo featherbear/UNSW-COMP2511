@@ -113,11 +113,11 @@ public class ArrayListSet<E> implements Set<E> {
 			return false;
 		}
 
-		if (!this.contains(otherSet)) {
+		if (!this.subsetOf(otherSet)) {
 			return false;
 		}
 
-		if (!otherSet.contains(this)) {
+		if (!otherSet.subsetOf(this)) {
 			return false;
 		}
 
