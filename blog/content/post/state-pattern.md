@@ -1,7 +1,7 @@
 ---
 title: "State Pattern"
 date: 2019-10-09T16:22:47+11:00
-
+categories: ["Design Patterns", "Behavioural Patterns"]
 description: ""
 hiddenFromHomePage: false
 postMetaInFooter: false

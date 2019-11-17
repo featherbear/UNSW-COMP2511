@@ -1,7 +1,7 @@
 ---
 title: "Strategy Pattern"
 date: 2019-10-08T16:24:30+11:00
-
+categories: ["Design Patterns", "Behavioural Patterns"]
 description: ""
 hiddenFromHomePage: false
 postMetaInFooter: false

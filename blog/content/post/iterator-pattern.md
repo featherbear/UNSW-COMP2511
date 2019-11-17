@@ -1,7 +1,7 @@
 ---
 title: "Iterator Pattern"
 date: 2019-10-29T16:31:24+11:00
-
+categories: ["Design Patterns", "Behavioural Patterns"]
 description: ""
 hiddenFromHomePage: false
 postMetaInFooter: false

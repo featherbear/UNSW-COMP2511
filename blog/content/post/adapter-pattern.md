@@ -1,7 +1,7 @@
 ---
 title: "Adapter Pattern"
 date: 2019-11-13T01:11:30+11:00
-
+categories: ["Design Patterns", "Structural Patterns"]
 description: ""
 hiddenFromHomePage: false
 postMetaInFooter: false

@@ -1,7 +1,7 @@
 ---
 title: "Template Method Pattern"
 date: 2019-11-11T23:21:00+11:00
-
+categories: ["Design Patterns", "Behavioural Patterns"]
 description: ""
 hiddenFromHomePage: false
 postMetaInFooter: false

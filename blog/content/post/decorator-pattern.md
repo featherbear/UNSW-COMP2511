@@ -1,7 +1,7 @@
 ---
 title: "Decorator Pattern"
 date: 2019-11-13T01:06:24+11:00
-
+categories: ["Design Patterns", "Structural Patterns"]
 description: ""
 hiddenFromHomePage: false
 postMetaInFooter: false

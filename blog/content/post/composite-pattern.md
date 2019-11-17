@@ -1,7 +1,7 @@
 ---
 title: "Composite Pattern"
 date: 2019-10-15T15:20:02+11:00
-
+categories: ["Design Patterns", "Structural Patterns"]
 description: ""
 hiddenFromHomePage: false
 postMetaInFooter: false

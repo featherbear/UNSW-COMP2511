@@ -1,7 +1,7 @@
 ---
 title: "Observer Pattern"
 date: 2019-10-09T17:14:51+11:00
-
+categories: ["Design Patterns", "Behavioural Patterns"]
 description: ""
 hiddenFromHomePage: false
 postMetaInFooter: false
