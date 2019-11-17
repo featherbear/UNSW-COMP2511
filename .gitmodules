@@ -1,3 +1,9 @@
 [submodule "blog/themes/hugo-theme-even"]
 	path = blog/themes/hugo-theme-even
 	url = https://github.com/olOwOlo/hugo-theme-even
+[submodule "Assignments/ass2"]
+	path = Assignments/ass2
+	url = https://github.com/featherbear/UNSW-COMP2511-ass2
+[submodule "Assignments/ass2_console"]
+	path = Assignments/ass2_console
+	url = https://github.com/featherbear/UNSW-COMP2511-ass2-DungeonConsole
