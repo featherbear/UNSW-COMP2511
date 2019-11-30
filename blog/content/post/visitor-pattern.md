@@ -39,7 +39,7 @@ visitor.visit(this)
 * Define a `Visitor` class which knows of the classes it will visit
   * Has a `visit(T)` method for each class type
     * In the implementation, do whatever you need
-* Define an interface `visitable` which exposes an `accept(Visitor)` method
+* Define an interface `Visitable` which exposes an `accept(Visitor)` method
   * In the implementation, `<Visitor>.visit(this)`
 
 A new class would require a new visit method to be added to each visitor...
