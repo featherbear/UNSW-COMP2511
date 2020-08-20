@@ -118,3 +118,6 @@ copyright = "Andrew Wong (z5206677)"
     e-linkedin = "https://www.linkedin.com/in/andrewjinmengwong/"
     g-github = "https://github.com/featherbear"
     m-instagram = "https://www.instagram.com/_andrewjwong/"
+
+[blackfriday]
+  smartypants = false
